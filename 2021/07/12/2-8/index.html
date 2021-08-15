@@ -17,20 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>Hello World | 张晓良&#39;s blog</title>
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <title>【2021暑期训练-2】2-8 unordered_map标记和sort（基础）点赞狂魔 (25分) | 张晓良&#39;s blog</title>
+  <meta name="description" content="微博上有个“点赞”功能，你可以为你喜欢的博文点个赞表示支持。每篇博文都有一些刻画其特性的标签，而你点赞的博文的类型，也间接刻画了你的特性。然而有这么一种人，他们会通过给自己看到的一切内容点赞来狂刷存在感，这种人就被称为“点赞狂魔”。他们点赞的标签非常分散，无法体现出明显的特性。本题就要求你写个程序，通过统计每个人点赞的不同标签的数量，找出前3名点赞狂魔。 输入格式：输入在第一行给出一个正整数N（≤">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2021/08/14/hello-world/index.html">
+<meta property="og:title" content="【2021暑期训练-2】2-8 unordered_map标记和sort（基础）点赞狂魔 (25分)">
+<meta property="og:url" content="http://example.com/2021/07/12/2-8/index.html">
 <meta property="og:site_name" content="zxl&#39;s blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="微博上有个“点赞”功能，你可以为你喜欢的博文点个赞表示支持。每篇博文都有一些刻画其特性的标签，而你点赞的博文的类型，也间接刻画了你的特性。然而有这么一种人，他们会通过给自己看到的一切内容点赞来狂刷存在感，这种人就被称为“点赞狂魔”。他们点赞的标签非常分散，无法体现出明显的特性。本题就要求你写个程序，通过统计每个人点赞的不同标签的数量，找出前3名点赞狂魔。 输入格式：输入在第一行给出一个正整数N（≤">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-08-14T07:23:23.840Z">
-<meta property="article:modified_time" content="2021-08-14T07:23:23.840Z">
+<meta property="article:published_time" content="2021-07-12T05:46:25.000Z">
+<meta property="article:modified_time" content="2021-08-15T08:40:57.946Z">
 <meta property="article:author" content="zxl">
+<meta property="article:tag" content="sort，STL">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://example.com/2021/08/14/hello-world/index.html">
+  <link rel="canonical" href="http://example.com/2021/07/12/2-8/index.html">
   
     <link rel="alternate" href="/atom.xml" title="zxl&#39;s blog" type="application/atom+xml">
   
@@ -347,14 +348,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-hello-world" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-2-8" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      【2021暑期训练-2】2-8 unordered_map标记和sort（基础）点赞狂魔 (25分)
     </h1>
   
 
@@ -362,34 +363,44 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2021/08/14/hello-world/" class="article-date">
-	  <time datetime="2021-08-14T07:23:23.840Z" itemprop="datePublished">2021-08-14</time>
+	<a href="/2021/07/12/2-8/" class="article-date">
+	  <time datetime="2021-07-12T05:46:25.000Z" itemprop="datePublished">2021-07-12</time>
 	</a>
 </span>
         
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/2021%E6%9A%91%E6%9C%9F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AE%AD%E7%BB%83/">2021暑期程序设计训练</a>►<a class="article-category-link" href="/categories/2021%E6%9A%91%E6%9C%9F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AE%AD%E7%BB%83/2021%E6%9A%91%E6%9C%9F%E8%AE%AD%E7%BB%83-2/">2021暑期训练-2</a>
+  </span>
+
         
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/sort%EF%BC%8CSTL/" rel="tag">sort，STL</a>
+  </span>
+
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/08/14/hello-world/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/07/12/2-8/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+        <p>微博上有个“点赞”功能，你可以为你喜欢的博文点个赞表示支持。每篇博文都有一些刻画其特性的标签，而你点赞的博文的类型，也间接刻画了你的特性。然而有这么一种人，他们会通过给自己看到的一切内容点赞来狂刷存在感，这种人就被称为“点赞狂魔”。他们点赞的标签非常分散，无法体现出明显的特性。本题就要求你写个程序，通过统计每个人点赞的不同标签的数量，找出前3名点赞狂魔。</p>
+<h3 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h3><p>输入在第一行给出一个正整数<em>N</em>（≤100），是待统计的用户数。随后<em>N</em>行，每行列出一位用户的点赞标签。格式为“<code>Name</code> <em>K</em> <em>F</em>1⋯<em>F**K</em>”，其中<code>Name</code>是不超过8个英文小写字母的非空用户名，1≤<em>K</em>≤1000，<em>F**i</em>（<em>i</em>=1,⋯,<em>K</em>）是特性标签的编号，我们将所有特性标签从 1 到 107 编号。数字间以空格分隔。</p>
+<h3 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h3><p>统计每个人点赞的不同标签的数量，找出数量最大的前3名，在一行中顺序输出他们的用户名,其间以1个空格分隔,且行末不得有多余空格。如果有并列，则输出标签出现次数平均值最小的那个，题目保证这样的用户没有并列。若不足3人，则用<code>-</code>补齐缺失，例如<code>mike jenny -</code>就表示只有2人。</p>
+<h3 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">bob 11 101 102 103 104 105 106 107 108 108 107 107</span><br><span class="line">peter 8 1 2 3 4 3 2 5 1</span><br><span class="line">chris 12 1 2 3 4 5 6 7 8 9 1 2 3</span><br><span class="line">john 10 8 7 6 5 4 3 2 1 7 5</span><br><span class="line">jack 9 6 7 8 9 10 11 12 13 14</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h3 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jack chris john</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>统计每个人点赞标签的数量，并按照降序输出，如果数量相等，按照平均值升序输出。用结构体存储每个人的姓名name，不同标签数量sum，标签总个数cnt。按sum降序输出，如果sum相同，则按照cnt升序输出。</p>
+<p>统计每个人不同标签个数，用set容器。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span> </span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	string name;</span><br><span class="line">	<span class="keyword">int</span> sum = <span class="number">0</span>, cnt = <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(node a, node b)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(a.sum != b.sum) <span class="keyword">return</span> a.sum &gt; b.sum;</span><br><span class="line">	<span class="keyword">return</span> a.cnt &lt; b.cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	node a[n];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">		string name;</span><br><span class="line">		<span class="keyword">int</span> k;</span><br><span class="line">		cin &gt;&gt; name &gt;&gt; k;</span><br><span class="line">		set&lt;<span class="keyword">int</span>&gt; st;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> t;</span><br><span class="line">			cin &gt;&gt; t;</span><br><span class="line">			st.<span class="built_in">insert</span>(t);</span><br><span class="line">		&#125;</span><br><span class="line">		a[i].name = name;</span><br><span class="line">		a[i].sum = st.<span class="built_in">size</span>();</span><br><span class="line">		a[i].cnt = k;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">sort</span>(a, a+n, cmp);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span>(i) cout &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">		<span class="keyword">if</span>(i &lt; n) cout &lt;&lt; a[i].name;</span><br><span class="line">		<span class="keyword">else</span> cout &lt;&lt; <span class="string">&quot;-&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
 
       
     </div>
@@ -399,7 +410,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://example.com/2021/08/14/hello-world/" title="Hello World" target="_blank" rel="external">http://example.com/2021/08/14/hello-world/</a>
+      <a href="http://example.com/2021/07/12/2-8/" title="【2021暑期训练-2】2-8 unordered_map标记和sort（基础）点赞狂魔 (25分)" target="_blank" rel="external">http://example.com/2021/07/12/2-8/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -446,12 +457,12 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/2021/08/14/first/" title="【2021暑期训练-2】2-3 数学模拟（基础）矩阵A乘以B (15分)"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+      <a href="/2021/07/12/2-9/" title="【2021暑期训练-2】2-9 set高效查找（基础）集合相似度 (25 分)"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
     </li>
     
     
     <li class="next">
-      <a href="/2021/07/12/2-10/" title="【2021暑期训练-2】2-10 素数筛（提高） 区间质数 (50分)"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2021/07/12/second/" title="【2021暑期训练-2】2-1 __gcd函数（基础） 最大公因数与最小公倍数 (10 分)"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     

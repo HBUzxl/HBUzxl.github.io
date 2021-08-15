@@ -17,20 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>Hello World | 张晓良&#39;s blog</title>
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <title>【2021暑期训练-2】2-9 set高效查找（基础）集合相似度 (25 分) | 张晓良&#39;s blog</title>
+  <meta name="description" content="给定两个整数集合，它们的相似度定义为：Nc&#x2F;Nt×100%。其中Nc是两个集合都有的不相等整数的个数，Nt是两个集合一共有的不相等整数的个数。你的任务就是计算任意一对给定集合的相似度。 输入格式：输入第一行给出一个正整数N（≤50），是集合的个数。随后N行，每行对应一个集合。每个集合首先给出一个正整数M（≤10^4^），是集合中元素的个数；然后跟M个[0,10^9^]区间内的整数。 之后一行给出一">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2021/08/14/hello-world/index.html">
+<meta property="og:title" content="【2021暑期训练-2】2-9 set高效查找（基础）集合相似度 (25 分)">
+<meta property="og:url" content="http://example.com/2021/07/12/2-9/index.html">
 <meta property="og:site_name" content="zxl&#39;s blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="给定两个整数集合，它们的相似度定义为：Nc&#x2F;Nt×100%。其中Nc是两个集合都有的不相等整数的个数，Nt是两个集合一共有的不相等整数的个数。你的任务就是计算任意一对给定集合的相似度。 输入格式：输入第一行给出一个正整数N（≤50），是集合的个数。随后N行，每行对应一个集合。每个集合首先给出一个正整数M（≤10^4^），是集合中元素的个数；然后跟M个[0,10^9^]区间内的整数。 之后一行给出一">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-08-14T07:23:23.840Z">
-<meta property="article:modified_time" content="2021-08-14T07:23:23.840Z">
+<meta property="article:published_time" content="2021-07-12T05:46:25.000Z">
+<meta property="article:modified_time" content="2021-08-15T08:40:56.936Z">
 <meta property="article:author" content="zxl">
+<meta property="article:tag" content="set，STL">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://example.com/2021/08/14/hello-world/index.html">
+  <link rel="canonical" href="http://example.com/2021/07/12/2-9/index.html">
   
     <link rel="alternate" href="/atom.xml" title="zxl&#39;s blog" type="application/atom+xml">
   
@@ -347,14 +348,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-hello-world" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-2-9" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      【2021暑期训练-2】2-9 set高效查找（基础）集合相似度 (25 分)
     </h1>
   
 
@@ -362,34 +363,47 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2021/08/14/hello-world/" class="article-date">
-	  <time datetime="2021-08-14T07:23:23.840Z" itemprop="datePublished">2021-08-14</time>
+	<a href="/2021/07/12/2-9/" class="article-date">
+	  <time datetime="2021-07-12T05:46:25.000Z" itemprop="datePublished">2021-07-12</time>
 	</a>
 </span>
         
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/2021%E6%9A%91%E6%9C%9F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AE%AD%E7%BB%83/">2021暑期程序设计训练</a>►<a class="article-category-link" href="/categories/2021%E6%9A%91%E6%9C%9F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AE%AD%E7%BB%83/2021%E6%9A%91%E6%9C%9F%E8%AE%AD%E7%BB%83-2/">2021暑期训练-2</a>
+  </span>
+
         
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/set%EF%BC%8CSTL/" rel="tag">set，STL</a>
+  </span>
+
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/08/14/hello-world/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/07/12/2-9/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+        <p>给定两个整数集合，它们的相似度定义为：<em>Nc/Nt</em>×100%。其中<em>Nc</em>是两个集合都有的不相等整数的个数，<em>Nt</em>是两个集合一共有的不相等整数的个数。你的任务就是计算任意一对给定集合的相似度。</p>
+<h3 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h3><p>输入第一行给出一个正整数<em>N</em>（≤50），是集合的个数。随后<em>N</em>行，每行对应一个集合。每个集合首先给出一个正整数<em>M</em>（≤10^4^），是集合中元素的个数；然后跟<em>M</em>个[0,10^9^]区间内的整数。</p>
+<p>之后一行给出一个正整数<em>K</em>（≤2000），随后<em>K</em>行，每行对应一对需要计算相似度的集合的编号（集合从1到<em>N</em>编号）。数字间以空格分隔。</p>
+<h3 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h3><p>对每一对需要计算的集合，在一行中输出它们的相似度，为保留小数点后2位的百分比数字。</p>
+<h3 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">3 99 87 101</span><br><span class="line">4 87 101 5 87</span><br><span class="line">7 99 101 18 5 135 18 99</span><br><span class="line">2</span><br><span class="line">1 2</span><br><span class="line">1 3</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h3 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">50.00%</span><br><span class="line">33.33%</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>集合中存放的是不相等的元素个数，所以需要用set容器，set相同值的元素只存放一次，set的大小就是对应集合的不相同元素的个数；用cnt记录两个集合都有的数字个数，然后再除以两个集合总共不同数字的个数。</p>
+<p>这里可以直接使用set中的find(x)函数来进行快速查找，判断这个集合是否存在x这个值，如果存在，返回一个指向被查找到元素的迭代器；如果不存在，则返回set.end()。</p>
+<p>所以判断一个元素x是否在set容器里，可以写判断条件为</p>
+<p><code>if（set.find(x) != set.end() ） return ture; else return falsel;</code></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	set&lt;<span class="keyword">int</span>&gt; a[n+<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> num, t;</span><br><span class="line">		cin &gt;&gt; num;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; num; j++) &#123;</span><br><span class="line">			cin &gt;&gt; t; </span><br><span class="line">			a[i].<span class="built_in">insert</span>(t);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> k;</span><br><span class="line">	cin &gt;&gt; k;</span><br><span class="line">	<span class="keyword">while</span>(k--) &#123;</span><br><span class="line">		<span class="keyword">int</span> x, y, cnt = <span class="number">0</span>;</span><br><span class="line">		cin &gt;&gt; x &gt;&gt; y;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">auto</span> it = a[x].<span class="built_in">begin</span>(); it != a[x].<span class="built_in">end</span>(); it++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(a[y].<span class="built_in">find</span>(*it) != a[y].<span class="built_in">end</span>()) cnt++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%.2f%%\n&quot;</span>, cnt*<span class="number">100.0</span>/(a[x].<span class="built_in">size</span>()+a[y].<span class="built_in">size</span>()-cnt));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
 
       
     </div>
@@ -399,7 +413,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://example.com/2021/08/14/hello-world/" title="Hello World" target="_blank" rel="external">http://example.com/2021/08/14/hello-world/</a>
+      <a href="http://example.com/2021/07/12/2-9/" title="【2021暑期训练-2】2-9 set高效查找（基础）集合相似度 (25 分)" target="_blank" rel="external">http://example.com/2021/07/12/2-9/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -446,12 +460,12 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/2021/08/14/first/" title="【2021暑期训练-2】2-3 数学模拟（基础）矩阵A乘以B (15分)"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+      <a href="/2021/07/12/2-6/" title="【2021暑期训练-2】2-6 map(基础)天梯赛的善良（20分）"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
     </li>
     
     
     <li class="next">
-      <a href="/2021/07/12/2-10/" title="【2021暑期训练-2】2-10 素数筛（提高） 区间质数 (50分)"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2021/07/12/2-8/" title="【2021暑期训练-2】2-8 unordered_map标记和sort（基础）点赞狂魔 (25分)"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
