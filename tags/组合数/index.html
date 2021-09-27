@@ -17,22 +17,16 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>【2021暑期训练-2】2-9 set高效查找（基础）集合相似度 (25 分) | 张晓良&#39;s blog</title>
-  <meta name="description" content="给定两个整数集合，它们的相似度定义为：Nc&#x2F;Nt×100%。其中Nc是两个集合都有的不相等整数的个数，Nt是两个集合一共有的不相等整数的个数。你的任务就是计算任意一对给定集合的相似度。 输入格式：输入第一行给出一个正整数N（≤50），是集合的个数。随后N行，每行对应一个集合。每个集合首先给出一个正整数M（≤10^4^），是集合中元素的个数；然后跟M个[0,10^9^]区间内的整数。 之后一行给出一">
-<meta property="og:type" content="article">
-<meta property="og:title" content="【2021暑期训练-2】2-9 set高效查找（基础）集合相似度 (25 分)">
-<meta property="og:url" content="http://example.com/2021/07/12/2-9/index.html">
+  <title>标签: 组合数 | 张晓良&#39;s blog</title>
+  <meta property="og:type" content="website">
+<meta property="og:title" content="zxl&#39;s blog">
+<meta property="og:url" content="http://example.com/tags/%E7%BB%84%E5%90%88%E6%95%B0/index.html">
 <meta property="og:site_name" content="zxl&#39;s blog">
-<meta property="og:description" content="给定两个整数集合，它们的相似度定义为：Nc&#x2F;Nt×100%。其中Nc是两个集合都有的不相等整数的个数，Nt是两个集合一共有的不相等整数的个数。你的任务就是计算任意一对给定集合的相似度。 输入格式：输入第一行给出一个正整数N（≤50），是集合的个数。随后N行，每行对应一个集合。每个集合首先给出一个正整数M（≤10^4^），是集合中元素的个数；然后跟M个[0,10^9^]区间内的整数。 之后一行给出一">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-07-12T05:46:25.000Z">
-<meta property="article:modified_time" content="2021-09-27T12:23:13.504Z">
 <meta property="article:author" content="zxl">
-<meta property="article:tag" content="STL">
-<meta property="article:tag" content="set">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://example.com/2021/07/12/2-9/index.html">
+  <link rel="canonical" href="http://example.com/tags/%E7%BB%84%E5%90%88%E6%95%B0/index.html">
   
     <link rel="alternate" href="/atom.xml" title="zxl&#39;s blog" type="application/atom+xml">
   
@@ -346,188 +340,78 @@
 </aside>
 
   
-  
-<main class="main" role="main">
-  <div class="content">
-  <article id="post-2-9" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <main class="main" role="main">
+  <article class="content article article-tags post-type-list" itemscope="">
+    <header class="article-header">
+      <h1 itemprop="name" class="hidden-xs">标签: 组合数</h1>
+      <p class="text-muted hidden-xs">共 1 篇文章</p>
+      <nav role="navigation" id="nav-main" class="okayNav">
+        <ul>
+          <li><a href="/tags">All</a></li>
+          
+          <li><a href="/tags/快速幂/">快速幂</a></li>
+          
+          <li><a href="/tags/素数，数学模拟/">素数，数学模拟</a></li>
+          
+          <li><a href="/tags/数学模拟/">数学模拟</a></li>
+          
+          <li><a href="/tags/建站/">建站</a></li>
+          
+          <li><a href="/tags/图床/">图床</a></li>
+          
+          <li><a href="/tags/素数/">素数</a></li>
+          
+          <li><a href="/tags/筛法/">筛法</a></li>
+          
+          <li><a href="/tags/矩阵/">矩阵</a></li>
+          
+          <li><a href="/tags/组合数/">组合数</a></li>
+          
+          <li><a href="/tags/map/">map</a></li>
+          
+          <li><a href="/tags/STL/">STL</a></li>
+          
+          <li><a href="/tags/sort/">sort</a></li>
+          
+          <li><a href="/tags/set/">set</a></li>
+          
+        </ul>
+      </nav>
+    </header>
+    <!-- /header -->
+    <div class="article-body">
+      <div class="row">
+        
+<div class="col-md-6">
     
-    <div class="article-header">
-      
-        
-  
-    <h1 class="article-title" itemprop="name">
-      【2021暑期训练-2】2-9 set高效查找（基础）集合相似度 (25 分)
-    </h1>
-  
-
-      
-      <div class="article-meta">
-        <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2021/07/12/2-9/" class="article-date">
-	  <time datetime="2021-07-12T05:46:25.000Z" itemprop="datePublished">2021-07-12</time>
-	</a>
-</span>
-        
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/2021%E6%9A%91%E6%9C%9F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AE%AD%E7%BB%83/">2021暑期程序设计训练</a>►<a class="article-category-link" href="/categories/2021%E6%9A%91%E6%9C%9F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AE%AD%E7%BB%83/2021%E6%9A%91%E6%9C%9F%E8%AE%AD%E7%BB%83-2/">2021暑期训练-2</a>
-  </span>
-
-        
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/STL/" rel="tag">STL</a>, <a class="article-tag-link-link" href="/tags/set/" rel="tag">set</a>
-  </span>
-
-
-        
-
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/07/12/2-9/#comments" class="article-comment-link">评论</a></span>
-        
-      </div>
-    </div>
-    <div class="article-entry marked-body" itemprop="articleBody">
-      
-        <p>给定两个整数集合，它们的相似度定义为：<em>Nc/Nt</em>×100%。其中<em>Nc</em>是两个集合都有的不相等整数的个数，<em>Nt</em>是两个集合一共有的不相等整数的个数。你的任务就是计算任意一对给定集合的相似度。</p>
-<h3 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h3><p>输入第一行给出一个正整数<em>N</em>（≤50），是集合的个数。随后<em>N</em>行，每行对应一个集合。每个集合首先给出一个正整数<em>M</em>（≤10^4^），是集合中元素的个数；然后跟<em>M</em>个[0,10^9^]区间内的整数。</p>
-<p>之后一行给出一个正整数<em>K</em>（≤2000），随后<em>K</em>行，每行对应一对需要计算相似度的集合的编号（集合从1到<em>N</em>编号）。数字间以空格分隔。</p>
-<h3 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h3><p>对每一对需要计算的集合，在一行中输出它们的相似度，为保留小数点后2位的百分比数字。</p>
-<h3 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">3 99 87 101</span><br><span class="line">4 87 101 5 87</span><br><span class="line">7 99 101 18 5 135 18 99</span><br><span class="line">2</span><br><span class="line">1 2</span><br><span class="line">1 3</span><br></pre></td></tr></table></figure>
-
-<h3 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">50.00%</span><br><span class="line">33.33%</span><br></pre></td></tr></table></figure>
-
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>集合中存放的是不相等的元素个数，所以需要用set容器，set相同值的元素只存放一次，set的大小就是对应集合的不相同元素的个数；用cnt记录两个集合都有的数字个数，然后再除以两个集合总共不同数字的个数。</p>
-<p>这里可以直接使用set中的find(x)函数来进行快速查找，判断这个集合是否存在x这个值，如果存在，返回一个指向被查找到元素的迭代器；如果不存在，则返回set.end()。</p>
-<p>所以判断一个元素x是否在set容器里，可以写判断条件为</p>
-<p><code>if（set.find(x) != set.end() ） return ture; else return falsel;</code></p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	set&lt;<span class="keyword">int</span>&gt; a[n+<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> num, t;</span><br><span class="line">		cin &gt;&gt; num;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; num; j++) &#123;</span><br><span class="line">			cin &gt;&gt; t; </span><br><span class="line">			a[i].<span class="built_in">insert</span>(t);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> k;</span><br><span class="line">	cin &gt;&gt; k;</span><br><span class="line">	<span class="keyword">while</span>(k--) &#123;</span><br><span class="line">		<span class="keyword">int</span> x, y, cnt = <span class="number">0</span>;</span><br><span class="line">		cin &gt;&gt; x &gt;&gt; y;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">auto</span> it = a[x].<span class="built_in">begin</span>(); it != a[x].<span class="built_in">end</span>(); it++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(a[y].<span class="built_in">find</span>(*it) != a[y].<span class="built_in">end</span>()) cnt++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%.2f%%\n&quot;</span>, cnt*<span class="number">100.0</span>/(a[x].<span class="built_in">size</span>()+a[y].<span class="built_in">size</span>()-cnt));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-    <div class="article-footer">
-      <blockquote class="mt-2x">
-  <ul class="post-copyright list-unstyled">
-    
-    <li class="post-copyright-link hidden-xs">
-      <strong>本文链接：</strong>
-      <a href="http://example.com/2021/07/12/2-9/" title="【2021暑期训练-2】2-9 set高效查找（基础）集合相似度 (25 分)" target="_blank" rel="external">http://example.com/2021/07/12/2-9/</a>
-    </li>
-    
-    <li class="post-copyright-license">
-      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
-    </li>
-  </ul>
-</blockquote>
-
-
-<div class="panel panel-default panel-badger">
+<article class="panel panel-default hover-shadow hover-grow" itemscope itemtype="http://schema.org/BlogPosting">
   <div class="panel-body">
-    <figure class="media">
-      <div class="media-left">
-        <a href="https://github.com/HBUzxl" target="_blank" class="img-burn thumb-sm visible-lg">
-          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
-        </a>
-      </div>
-      <div class="media-body">
-        <h3 class="media-heading"><a href="https://github.com/HBUzxl" target="_blank"><span class="text-dark">张晓良</span><small class="ml-1x">Web Developer &amp; Designer</small></a></h3>
-        <div>个人简介。</div>
-      </div>
-    </figure>
-  </div>
+     <div class="article-meta">
+       <time datetime="2021-07-12T05:46:25.000Z" itemprop="datePublished">2021-07-12</time>
+     </div>
+     <h3 class="article-title" itemprop="name">
+       <a class="article-link" href="/2021/07/12/2-4/">【2021暑期训练-2】2-4 数学模拟（基础）组合数的和 (15分)</a>
+     </h3>
+   </div>
+   
+   <div class="panel-footer">
+     
+      <a href="/tags/%E6%95%B0%E5%AD%A6%E6%A8%A1%E6%8B%9F/" class="label label-default mb">数学模拟</a>
+     
+      <a href="/tags/%E7%BB%84%E5%90%88%E6%95%B0/" class="label label-default mb">组合数</a>
+     
+     
+   </div>
+   
+</article>
+
+
 </div>
 
-
+      </div>
     </div>
   </article>
-  
-    
-  <section id="comments">
-  	
-      <div id="vcomments"></div>
-    
-  </section>
-
-
-  
-</div>
-
-  <nav class="bar bar-footer clearfix" data-stick-bottom>
-  <div class="bar-inner">
-  
-  <ul class="pager pull-left">
-    
-    <li class="prev">
-      <a href="/2021/07/12/2-8/" title="【2021暑期训练-2】2-8 unordered_map标记和sort（基础）点赞狂魔 (25分)"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
-    
-    
-  </ul>
-  
-  
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
-  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
-    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
-  </div> -->
-  
-  
-  <div class="bar-right">
-    
-    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
-    
-  </div>
-  </div>
-</nav>
-  
-<!-- Modal -->
-<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content donate">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <div class="modal-body">
-        <div class="donate-box">
-          <div class="donate-head">
-            <p>感谢您的支持，我会继续努力的!</p>
-          </div>
-          <div class="tab-content">
-            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
-              <div class="donate-payimg">
-                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
-              </div>
-              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
-              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
-            </div>
-            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
-              <div class="donate-payimg">
-                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
-              </div>
-              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
-              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
-            </div>
-          </div>
-          <div class="donate-footer">
-            <ul class="nav nav-tabs nav-justified" role="tablist">
-              <li role="presentation" class="active">
-                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
-              </li>
-              <li role="presentation" class="">
-                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
+   
 </main>
 
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
@@ -608,37 +492,6 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
-
-   
-
-
-
-
-   
-    
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/valine"></script>
-  <script type="text/javascript">
-  var GUEST = ['nick', 'mail', 'link'];
-  var meta = 'nick,mail,link';
-  meta = meta.split(',').filter(function(item) {
-    return GUEST.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#vcomments',
-    verify: false,
-    notify: false,
-    appId: '',
-    appKey: '',
-    placeholder: 'Just go go',
-    avatar: 'mm',
-    meta: meta,
-    pageSize: '10' || 10,
-    visitor: false
-  });
-  </script>
-
-     
 
 
 
