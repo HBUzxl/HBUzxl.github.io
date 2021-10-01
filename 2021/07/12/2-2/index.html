@@ -312,7 +312,7 @@
                 <a class="category-link" href="/categories/2021%E6%9A%91%E6%9C%9F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AE%AD%E7%BB%83/">2021暑期程序设计训练</a><i class="icon icon-angle-right"></i><a class="category-link" href="/categories/2021%E6%9A%91%E6%9C%9F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AE%AD%E7%BB%83/2021%E6%9A%91%E6%9C%9F%E8%AE%AD%E7%BB%83-2/">2021暑期训练-2</a>
               </p>
               <p class="item-title">
-                <a href="/2021/07/12/2-12/" class="title">【2021暑期训练-2】2-12快速幂（提高）等比数列求和 (80 分)</a>
+                <a href="/2021/07/12/2-10/" class="title">【2021暑期训练-2】2-10 素数筛（提高） 区间质数 (50分)</a>
               </p>
               <p class="item-date">
                 <time datetime="2021-07-12T05:46:25.000Z" itemprop="datePublished">2021-07-12</time>
@@ -457,12 +457,12 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/2021/07/12/2-10/" title="【2021暑期训练-2】2-10 素数筛（提高） 区间质数 (50分)"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+      <a href="/2021/07/12/2-11/" title="【2021暑期训练-2】2-11 基本快速幂（提高） 快速幂运算 (10 分)"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
     </li>
     
     
     <li class="next">
-      <a href="/2021/07/12/2-3/" title="【2021暑期训练-2】2-3 数学模拟（基础）矩阵A乘以B (15分)"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2021/07/12/2-12/" title="【2021暑期训练-2】2-12快速幂（提高）等比数列求和 (80 分)"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
@@ -645,6 +645,42 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+
+
+// 回到顶部
+<div id="go-top"></div>
+<style type="text/css">
+#go-top {
+ width:40px;height:36px;
+ background-color:#DDA0DD;
+ position:relative;
+ border-radius:2px;
+ position:fixed;right:10px;bottom:60px;
+ cursor:pointer;display:none;
+}
+#go-top:after {
+ content:" ";
+ position:absolute;left:14px;top:14px;
+ border-top:2px solid #fff;border-right:2px solid #fff;
+ width:12px;height:12px;
+ transform:rotate(-45deg);
+}
+#go-top:hover {
+ background-color:#8A2BE2;
+}
+</style>
+<script>
+$(function () {
+  var top=$("#go-top");
+  $(window).scroll(function () {
+    ($(window).scrollTop() > 300) ? top.show(300) : top.hide(200);
+    $("#go-top").click(function () {
+      $('body,html').animate({scrollTop:0});
+      return false();
+    })
+  });
+});
+</script>
 
   
     <style>
