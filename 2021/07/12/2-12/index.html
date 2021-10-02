@@ -44,6 +44,8 @@
   
   
   
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
   
 <meta name="generator" content="Hexo 5.4.0"></head>
 
@@ -149,12 +151,12 @@
         </li>
         
         
-        <li class="menu-item menu-item-books">
-          <a href="/books">
+        <li class="menu-item menu-item-gallery">
+          <a href="/gallery">
             
-            <i class="icon icon-book-fill"></i>
+            <i class="icon icon-delicious"></i>
             
-            <span class="menu-title">书单</span>
+            <span class="menu-title">相册</span>
           </a>
         </li>
         
@@ -456,12 +458,12 @@
   <ul class="pager pull-left">
     
     <li class="prev">
-      <a href="/2021/07/12/2-2/" title="【2021暑期训练-2】2-2 素数判断（基础）素数对猜想 (20 分)"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+      <a href="/2021/07/12/2-11/" title="【2021暑期训练-2】2-11 基本快速幂（提高） 快速幂运算 (10 分)"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
     </li>
     
     
     <li class="next">
-      <a href="/2021/07/12/2-3/" title="【2021暑期训练-2】2-3 数学模拟（基础）矩阵A乘以B (15分)"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2021/07/12/2-2/" title="【2021暑期训练-2】2-2 素数判断（基础）素数对猜想 (20 分)"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
@@ -641,6 +643,35 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
 
 
 
@@ -757,3 +788,12 @@ $(function () {
 
 </body>
 </html>
+
+<!--动态线条背景-->
+<script type="text/javascript"
+color="34,34,34" 
+opacity='0.7' //透明度
+zIndex="-1"   //位置层次
+count="200"   //线条数量
+src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>

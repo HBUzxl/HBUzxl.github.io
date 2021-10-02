@@ -41,6 +41,8 @@
   
   
   
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
   
 <meta name="generator" content="Hexo 5.4.0"></head>
 
@@ -146,12 +148,12 @@
         </li>
         
         
-        <li class="menu-item menu-item-books">
-          <a href="/books">
+        <li class="menu-item menu-item-gallery">
+          <a href="/gallery">
             
-            <i class="icon icon-book-fill"></i>
+            <i class="icon icon-delicious"></i>
             
-            <span class="menu-title">书单</span>
+            <span class="menu-title">相册</span>
           </a>
         </li>
         
@@ -365,11 +367,11 @@
           
           <li><a href="/tags/组合数/">组合数</a></li>
           
-          <li><a href="/tags/sort/">sort</a></li>
+          <li><a href="/tags/map/">map</a></li>
           
           <li><a href="/tags/STL/">STL</a></li>
           
-          <li><a href="/tags/map/">map</a></li>
+          <li><a href="/tags/sort/">sort</a></li>
           
           <li><a href="/tags/set/">set</a></li>
           
@@ -716,7 +718,7 @@
       </div>
       
       <h3 class="panel-title mb-1x">
-        <a href="/tags/sort/" title="#sort"># sort</a>
+        <a href="/tags/map/" title="#map"># map</a>
         <small class="text-muted">(Total 1 articles)</small>
       </h3>
       <div class="row">
@@ -729,13 +731,13 @@
        <time datetime="2021-07-12T05:46:25.000Z" itemprop="datePublished">2021-07-12</time>
      </div>
      <h3 class="article-title" itemprop="name">
-       <a class="article-link" href="/2021/07/12/2-8/">【2021暑期训练-2】2-8 unordered_map标记和sort（基础）点赞狂魔 (25分)</a>
+       <a class="article-link" href="/2021/07/12/2-6/">【2021暑期训练-2】2-6 map(基础)天梯赛的善良（20分）</a>
      </h3>
    </div>
    
    <div class="panel-footer">
      
-      <a href="/tags/sort/" class="label label-default mb">sort</a>
+      <a href="/tags/map/" class="label label-default mb">map</a>
      
       <a href="/tags/STL/" class="label label-default mb">STL</a>
      
@@ -763,13 +765,13 @@
        <time datetime="2021-07-12T05:46:25.000Z" itemprop="datePublished">2021-07-12</time>
      </div>
      <h3 class="article-title" itemprop="name">
-       <a class="article-link" href="/2021/07/12/2-8/">【2021暑期训练-2】2-8 unordered_map标记和sort（基础）点赞狂魔 (25分)</a>
+       <a class="article-link" href="/2021/07/12/2-6/">【2021暑期训练-2】2-6 map(基础)天梯赛的善良（20分）</a>
      </h3>
    </div>
    
    <div class="panel-footer">
      
-      <a href="/tags/sort/" class="label label-default mb">sort</a>
+      <a href="/tags/map/" class="label label-default mb">map</a>
      
       <a href="/tags/STL/" class="label label-default mb">STL</a>
      
@@ -789,7 +791,7 @@
        <time datetime="2021-07-12T05:46:25.000Z" itemprop="datePublished">2021-07-12</time>
      </div>
      <h3 class="article-title" itemprop="name">
-       <a class="article-link" href="/2021/07/12/2-6/">【2021暑期训练-2】2-6 map(基础)天梯赛的善良（20分）</a>
+       <a class="article-link" href="/2021/07/12/2-8/">【2021暑期训练-2】2-8 unordered_map标记和sort（基础）点赞狂魔 (25分)</a>
      </h3>
    </div>
    
@@ -797,7 +799,7 @@
      
       <a href="/tags/STL/" class="label label-default mb">STL</a>
      
-      <a href="/tags/map/" class="label label-default mb">map</a>
+      <a href="/tags/sort/" class="label label-default mb">sort</a>
      
      
    </div>
@@ -836,7 +838,7 @@
       </div>
       
       <h3 class="panel-title mb-1x">
-        <a href="/tags/map/" title="#map"># map</a>
+        <a href="/tags/sort/" title="#sort"># sort</a>
         <small class="text-muted">(Total 1 articles)</small>
       </h3>
       <div class="row">
@@ -849,7 +851,7 @@
        <time datetime="2021-07-12T05:46:25.000Z" itemprop="datePublished">2021-07-12</time>
      </div>
      <h3 class="article-title" itemprop="name">
-       <a class="article-link" href="/2021/07/12/2-6/">【2021暑期训练-2】2-6 map(基础)天梯赛的善良（20分）</a>
+       <a class="article-link" href="/2021/07/12/2-8/">【2021暑期训练-2】2-8 unordered_map标记和sort（基础）点赞狂魔 (25分)</a>
      </h3>
    </div>
    
@@ -857,7 +859,7 @@
      
       <a href="/tags/STL/" class="label label-default mb">STL</a>
      
-      <a href="/tags/map/" class="label label-default mb">map</a>
+      <a href="/tags/sort/" class="label label-default mb">sort</a>
      
      
    </div>
@@ -1056,6 +1058,35 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
 
 
 
@@ -1172,3 +1203,12 @@ $(function () {
 
 </body>
 </html>
+
+<!--动态线条背景-->
+<script type="text/javascript"
+color="34,34,34" 
+opacity='0.7' //透明度
+zIndex="-1"   //位置层次
+count="200"   //线条数量
+src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
