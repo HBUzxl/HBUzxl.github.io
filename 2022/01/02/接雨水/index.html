@@ -17,18 +17,23 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>友情链接 | ZXL&#39;s Blog|你的坚持，终将美好</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="友情链接">
-<meta property="og:url" content="https://hbuzxl.github.io/links/index.html">
+  <title>算法：接雨水 | ZXL&#39;s Blog|你的坚持，终将美好</title>
+  <meta name="description" content="在PTA2021跨年挑战赛的题目中看到这道题，当时没有做出来，现在在这里整理一下，这道题非常巧妙，官方题解里面有三种做法：动态规划、单调栈和双指针 动态规划首先看这张图片，真的非常清晰明了。首先正向遍历得到每一栏左边最高的地方，再反向遍历得到右边的最高栏。然后最精彩的地方来了：左右最高栏中的最小值-栏高即为该栏的雨水量 1ans +&#x3D; min(leftMax[i], rightMax[i]) -">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法：接雨水">
+<meta property="og:url" content="https://hbuzxl.github.io/2022/01/02/%E6%8E%A5%E9%9B%A8%E6%B0%B4/index.html">
 <meta property="og:site_name" content="ZXL&#39;s Blog">
+<meta property="og:description" content="在PTA2021跨年挑战赛的题目中看到这道题，当时没有做出来，现在在这里整理一下，这道题非常巧妙，官方题解里面有三种做法：动态规划、单调栈和双指针 动态规划首先看这张图片，真的非常清晰明了。首先正向遍历得到每一栏左边最高的地方，再反向遍历得到右边的最高栏。然后最精彩的地方来了：左右最高栏中的最小值-栏高即为该栏的雨水量 1ans +&#x3D; min(leftMax[i], rightMax[i]) -">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-12-04T14:04:36.819Z">
-<meta property="article:modified_time" content="2021-08-14T07:31:14.492Z">
+<meta property="og:image" content="https://gitee.com/hbuzxl/picture/raw/master/img/image-20220102213241249.png">
+<meta property="og:image" content="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/10/22/rainwatertrap.png">
+<meta property="article:published_time" content="2022-01-02T13:30:53.000Z">
+<meta property="article:modified_time" content="2022-01-02T13:46:38.172Z">
 <meta property="article:author" content="zxl">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/hbuzxl/picture/raw/master/img/image-20220102213241249.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://hbuzxl.github.io/links/index.html">
+  <link rel="canonical" href="https://hbuzxl.github.io/2022/01/02/%E6%8E%A5%E9%9B%A8%E6%B0%B4/index.html">
   
     <link rel="alternate" href="/atom.xml" title="ZXL&#39;s Blog" type="application/atom+xml">
   
@@ -47,7 +52,7 @@
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 
-<body class="main-center theme-purple# 主题颜色 theme-black theme-blue theme-green theme-purple no-sidebar" itemscope itemtype="http://schema.org/WebPage">
+<body class="main-center theme-purple# 主题颜色 theme-black theme-blue theme-green theme-purple" itemscope itemtype="http://schema.org/WebPage">
   <header class="header" itemscope itemtype="http://schema.org/WPHeader">
   <div class="slimContent">
     <div class="navbar-header">
@@ -268,49 +273,218 @@
 </aside>
 
   
-  <main class="main" role="main">
-  <article class="article article-links article-type-list" itemscope="">
-  <header class="article-header">
-    <h1 itemprop="title">友情链接</h1>
-    <p class="text-muted">
-      欢迎交换链接，可在当前页面留言
-    </p>
-  </header>
-  <div class="article-body">
-    <div class="row">
+  
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-number">1.</span> <span class="toc-text">动态规划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88"><span class="toc-number">2.</span> <span class="toc-text">双指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E8%B0%83%E6%A0%88"><span class="toc-number">3.</span> <span class="toc-text">单调栈</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-接雨水" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
       
         
-          <div class="col-sm-6 col-md-4">
-            <div class="panel panel-default hover-shadow hover-grow">
-              <figure class="media media-middle">
-                <div class="media-left pr-no">
-                  <a href="https://cdn.jsdelivr.net/gh/hbuzxl/Picture@master/img/Cofess.png" target="_blank" class="img-burn thumb-md media-middle">
-                    <img src="https://cdn.jsdelivr.net/gh/hbuzxl/Picture@master/img/Cofess.png" class="w-full" alt="Hexo pure主题开发者">
-                  </a>
-                </div>
-                <div class="media-body p-0x">
-                  <h4 class="media-heading"><a href="https://blog.cofess.com/" target="_blank">
-       <span style="color:#9932CC" title="点击跳转">Cofess</span></a>
-                  </h4>
-                  <div class="text-muted">
-                    Hexo pure主题开发者
-                  </div>
-                </div>
-              </figure>
-            </div>
-          </div>
-          
-    </div>
-  </div>
-</article>
-
   
+    <h1 class="article-title" itemprop="name">
+      算法：接雨水
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2022/01/02/%E6%8E%A5%E9%9B%A8%E6%B0%B4/" class="article-date">
+	  <time datetime="2022-01-02T13:30:53.000Z" itemprop="datePublished">2022-01-02</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+  </span>
+
+        
+
+        
+
+	<span class="article-read hidden-xs">
+    	<i class="icon icon-eye-fill" aria-hidden="true"></i>
+    	<span id="/2022/01/02/%E6%8E%A5%E9%9B%A8%E6%B0%B4/" class="leancloud_visitors"  data-flag-title="算法：接雨水">
+			<span class="leancloud-visitors-count">0</span>
+		</span>
+    </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2022/01/02/%E6%8E%A5%E9%9B%A8%E6%B0%B4/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>在PTA2021跨年挑战赛的题目中看到这道题，当时没有做出来，现在在这里整理一下，这道题非常巧妙，官方题解里面有三种做法：动态规划、单调栈和双指针</p>
+<h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>首先看这张图片，真的非常清晰明了。首先正向遍历得到每一栏左边最高的地方，再反向遍历得到右边的最高栏。然后最精彩的地方来了：<code>左右最高栏中的最小值-栏高即为该栏的雨水量</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ans += <span class="built_in">min</span>(leftMax[i], rightMax[i]) - height[i];</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/hbuzxl/picture/raw/master/img/image-20220102213241249.png" alt="image-20220102213241249"></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">trap</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> leftMax[n], rightMax[n];</span><br><span class="line">	leftMax[<span class="number">0</span>] = height[<span class="number">0</span>];</span><br><span class="line">	rightMax[n<span class="number">-1</span>] = height[n<span class="number">-1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">		leftMax[i] = <span class="built_in">max</span>(leftMax[i<span class="number">-1</span>], height[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = n<span class="number">-2</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">		rightMax[i] = <span class="built_in">max</span>(rightMax[i+<span class="number">1</span>], height[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">		ans += <span class="built_in">min</span>(leftMax[i], rightMax[i]) - height[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h2><p><code>l</code>和<code>r</code>是左右指针也就是下标，<code>lMax</code>和<code>rMax</code>左右位置的最高值。<br>我看题解的时候最大的疑惑就是，lMax和rMax都距离当前位置很远，是怎么正确的表示出当前位置的雨水量的呢。久思不得其解，直到我看见了一个<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/trapping-rain-water/solution/jie-yu-shui-by-leetcode/327718">解释</a>，就顿悟了，原来如此啊！！！</p>
+<font color="red">
+对于位置l而言，它左边最大值肯定是lMax，右边最大值大于等于rMax，如果lMax < rMax， 根据短板效应，无论右边高度是多少都不影响结果，所以它就可以计算出自己的出水量；如果lMax >  rMax时，在计算当前l位置必然不正确，但是r位置则是正确的。
+</font>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">trap</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> l = <span class="number">0</span>, r = n<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">int</span> lMax = <span class="number">0</span>, rMax = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(l &lt;= r) &#123;</span><br><span class="line">		<span class="keyword">if</span>(lMax &lt; rMax) &#123;</span><br><span class="line">			ans += <span class="built_in">max</span>(<span class="number">0</span>, lMax-height[l]);</span><br><span class="line">			lMax = <span class="built_in">max</span>(lMax, height[l]);</span><br><span class="line">			l++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			ans += <span class="built_in">max</span>(<span class="number">0</span>, rMax-height[r]);</span><br><span class="line">			rMax = <span class="built_in">max</span>(rMax, height[r]);</span><br><span class="line">			r--;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h2><p><strong>单调栈</strong>：单调递增或单调递减的栈叫做单调栈！！<br>按照层数来计算的</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">trap</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">	stack&lt;<span class="keyword">int</span>&gt; s;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">		<span class="keyword">while</span>(!s.<span class="built_in">empty</span>() &amp;&amp; height[s.<span class="built_in">top</span>()] &lt; height[i]) &#123;</span><br><span class="line">			<span class="keyword">int</span> tmp = s.<span class="built_in">top</span>();</span><br><span class="line">			s.<span class="built_in">pop</span>();</span><br><span class="line">			<span class="keyword">if</span>(s.<span class="built_in">empty</span>()) <span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">int</span> l = s.<span class="built_in">top</span>();</span><br><span class="line">			<span class="keyword">int</span> r = i;</span><br><span class="line">			<span class="keyword">int</span> h = <span class="built_in">min</span>(height[r], height[l])-height[tmp];</span><br><span class="line">			ans += (r-l<span class="number">-1</span>)*h;</span><br><span class="line">		&#125;</span><br><span class="line">		s.<span class="built_in">push</span>(i); </span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>给定 <code>n</code> 个非负整数表示每个宽度为 <code>1</code> 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。</p>
+<p><strong>示例 1：</strong> </p>
+<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/10/22/rainwatertrap.png"></p>
+<p><strong>输入：</strong> height = [0,1,0,2,1,0,1,3,2,1,2,1]<br><strong>输出：</strong> 6<br><strong>解释：</strong> 上面是由数组 [0,1,0,2,1,0,1,3,2,1,2,1] 表示的高度图，在这种情况下，可以接 6 个单位的雨水（蓝色部分表示雨水）。 </p>
+<p><strong>示例 2：</strong> </p>
+<p><strong>输入：</strong> height = [4,2,0,3,2,5]<br><strong>输出：</strong> 9</p>
+<p><strong>提示：</strong> </p>
+<ul>
+<li>  <code>n == height.length</code></li>
+<li>  <code>1 &lt;= n &lt;= 2 * 104</code></li>
+<li>  <code>0 &lt;= height[i] &lt;= 105</code></li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://hbuzxl.github.io/2022/01/02/%E6%8E%A5%E9%9B%A8%E6%B0%B4/" title="算法：接雨水" target="_blank" rel="external">https://hbuzxl.github.io/2022/01/02/接雨水/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/HBUzxl" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/HBUzxl" target="_blank"><span class="text-dark">张晓良</span><small class="ml-1x">你的坚持，终将美好</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
   <section id="comments">
   	
       <div id="vcomments"></div>
     
   </section>
 
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2021/10/11/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" title="数据链路层(知识点总结)"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+        <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -392,6 +566,10 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+
+
+
+   
 
 
 
