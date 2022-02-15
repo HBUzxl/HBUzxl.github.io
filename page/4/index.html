@@ -270,14 +270,14 @@
   
   
     <div class="content">
-  <article id="post-2-9" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-2-8" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/07/12/2-9/">【2021暑期训练-2】2-9 set高效查找（基础）集合相似度 (25 分)</a>
+      <a class="article-title" href="/2021/07/12/2-8/">【2021暑期训练-2】2-8 unordered_map标记和sort（基础）点赞狂魔 (25分)</a>
     </h1>
   
 
@@ -285,7 +285,7 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2021/07/12/2-9/" class="article-date">
+	<a href="/2021/07/12/2-8/" class="article-date">
 	  <time datetime="2021-07-12T05:46:25.000Z" itemprop="datePublished">2021-07-12</time>
 	</a>
 </span>
@@ -298,7 +298,7 @@
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/STL/" rel="tag">STL</a>, <a class="article-tag-link-link" href="/tags/set/" rel="tag">set</a>
+	<a class="article-tag-link-link" href="/tags/STL/" rel="tag">STL</a>, <a class="article-tag-link-link" href="/tags/sort/" rel="tag">sort</a>
   </span>
 
 
@@ -306,30 +306,27 @@
 
 	<span class="article-read hidden-xs">
     	<i class="icon icon-eye-fill" aria-hidden="true"></i>
-    	<span id="/2021/07/12/2-9/" class="leancloud_visitors"  data-flag-title="【2021暑期训练-2】2-9 set高效查找（基础）集合相似度 (25 分)">
+    	<span id="/2021/07/12/2-8/" class="leancloud_visitors"  data-flag-title="【2021暑期训练-2】2-8 unordered_map标记和sort（基础）点赞狂魔 (25分)">
 			<span class="leancloud-visitors-count">0</span>
 		</span>
     </span>
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/07/12/2-9/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/07/12/2-8/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>给定两个整数集合，它们的相似度定义为：<em>Nc/Nt</em>×100%。其中<em>Nc</em>是两个集合都有的不相等整数的个数，<em>Nt</em>是两个集合一共有的不相等整数的个数。你的任务就是计算任意一对给定集合的相似度。</p>
-<h3 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h3><p>输入第一行给出一个正整数<em>N</em>（≤50），是集合的个数。随后<em>N</em>行，每行对应一个集合。每个集合首先给出一个正整数<em>M</em>（≤10^4^），是集合中元素的个数；然后跟<em>M</em>个[0,10^9^]区间内的整数。</p>
-<p>之后一行给出一个正整数<em>K</em>（≤2000），随后<em>K</em>行，每行对应一对需要计算相似度的集合的编号（集合从1到<em>N</em>编号）。数字间以空格分隔。</p>
-<h3 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h3><p>对每一对需要计算的集合，在一行中输出它们的相似度，为保留小数点后2位的百分比数字。</p>
-<h3 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">3 99 87 101</span><br><span class="line">4 87 101 5 87</span><br><span class="line">7 99 101 18 5 135 18 99</span><br><span class="line">2</span><br><span class="line">1 2</span><br><span class="line">1 3</span><br></pre></td></tr></table></figure>
+        <p>微博上有个“点赞”功能，你可以为你喜欢的博文点个赞表示支持。每篇博文都有一些刻画其特性的标签，而你点赞的博文的类型，也间接刻画了你的特性。然而有这么一种人，他们会通过给自己看到的一切内容点赞来狂刷存在感，这种人就被称为“点赞狂魔”。他们点赞的标签非常分散，无法体现出明显的特性。本题就要求你写个程序，通过统计每个人点赞的不同标签的数量，找出前3名点赞狂魔。</p>
+<h3 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h3><p>输入在第一行给出一个正整数<em>N</em>（≤100），是待统计的用户数。随后<em>N</em>行，每行列出一位用户的点赞标签。格式为“<code>Name</code> <em>K</em> <em>F</em>1⋯<em>F**K</em>”，其中<code>Name</code>是不超过8个英文小写字母的非空用户名，1≤<em>K</em>≤1000，<em>F**i</em>（<em>i</em>=1,⋯,<em>K</em>）是特性标签的编号，我们将所有特性标签从 1 到 107 编号。数字间以空格分隔。</p>
+<h3 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h3><p>统计每个人点赞的不同标签的数量，找出数量最大的前3名，在一行中顺序输出他们的用户名,其间以1个空格分隔,且行末不得有多余空格。如果有并列，则输出标签出现次数平均值最小的那个，题目保证这样的用户没有并列。若不足3人，则用<code>-</code>补齐缺失，例如<code>mike jenny -</code>就表示只有2人。</p>
+<h3 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">bob 11 101 102 103 104 105 106 107 108 108 107 107</span><br><span class="line">peter 8 1 2 3 4 3 2 5 1</span><br><span class="line">chris 12 1 2 3 4 5 6 7 8 9 1 2 3</span><br><span class="line">john 10 8 7 6 5 4 3 2 1 7 5</span><br><span class="line">jack 9 6 7 8 9 10 11 12 13 14</span><br></pre></td></tr></table></figure>
 
-<h3 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">50.00%</span><br><span class="line">33.33%</span><br></pre></td></tr></table></figure>
+<h3 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jack chris john</span><br></pre></td></tr></table></figure>
 
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>集合中存放的是不相等的元素个数，所以需要用set容器，set相同值的元素只存放一次，set的大小就是对应集合的不相同元素的个数；用cnt记录两个集合都有的数字个数，然后再除以两个集合总共不同数字的个数。</p>
-<p>这里可以直接使用set中的find(x)函数来进行快速查找，判断这个集合是否存在x这个值，如果存在，返回一个指向被查找到元素的迭代器；如果不存在，则返回set.end()。</p>
-<p>所以判断一个元素x是否在set容器里，可以写判断条件为</p>
-<p><code>if（set.find(x) != set.end() ） return ture; else return falsel;</code></p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	set&lt;<span class="keyword">int</span>&gt; a[n+<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> num, t;</span><br><span class="line">		cin &gt;&gt; num;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; num; j++) &#123;</span><br><span class="line">			cin &gt;&gt; t; </span><br><span class="line">			a[i].<span class="built_in">insert</span>(t);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> k;</span><br><span class="line">	cin &gt;&gt; k;</span><br><span class="line">	<span class="keyword">while</span>(k--) &#123;</span><br><span class="line">		<span class="keyword">int</span> x, y, cnt = <span class="number">0</span>;</span><br><span class="line">		cin &gt;&gt; x &gt;&gt; y;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">auto</span> it = a[x].<span class="built_in">begin</span>(); it != a[x].<span class="built_in">end</span>(); it++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(a[y].<span class="built_in">find</span>(*it) != a[y].<span class="built_in">end</span>()) cnt++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%.2f%%\n&quot;</span>, cnt*<span class="number">100.0</span>/(a[x].<span class="built_in">size</span>()+a[y].<span class="built_in">size</span>()-cnt));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>统计每个人点赞标签的数量，并按照降序输出，如果数量相等，按照平均值升序输出。用结构体存储每个人的姓名name，不同标签数量sum，标签总个数cnt。按sum降序输出，如果sum相同，则按照cnt升序输出。</p>
+<p>统计每个人不同标签个数，用set容器。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span> </span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	string name;</span><br><span class="line">	<span class="keyword">int</span> sum = <span class="number">0</span>, cnt = <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(node a, node b)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(a.sum != b.sum) <span class="keyword">return</span> a.sum &gt; b.sum;</span><br><span class="line">	<span class="keyword">return</span> a.cnt &lt; b.cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	node a[n];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">		string name;</span><br><span class="line">		<span class="keyword">int</span> k;</span><br><span class="line">		cin &gt;&gt; name &gt;&gt; k;</span><br><span class="line">		set&lt;<span class="keyword">int</span>&gt; st;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> t;</span><br><span class="line">			cin &gt;&gt; t;</span><br><span class="line">			st.<span class="built_in">insert</span>(t);</span><br><span class="line">		&#125;</span><br><span class="line">		a[i].name = name;</span><br><span class="line">		a[i].sum = st.<span class="built_in">size</span>();</span><br><span class="line">		a[i].cnt = k;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">sort</span>(a, a+n, cmp);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span>(i) cout &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">		<span class="keyword">if</span>(i &lt; n) cout &lt;&lt; a[i].name;</span><br><span class="line">		<span class="keyword">else</span> cout &lt;&lt; <span class="string">&quot;-&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -342,7 +339,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://hbuzxl.github.io/2021/07/12/2-9/" title="【2021暑期训练-2】2-9 set高效查找（基础）集合相似度 (25 分)" target="_blank" rel="external">https://hbuzxl.github.io/2021/07/12/2-9/</a>
+      <a href="https://hbuzxl.github.io/2021/07/12/2-8/" title="【2021暑期训练-2】2-8 unordered_map标记和sort（基础）点赞狂魔 (25分)" target="_blank" rel="external">https://hbuzxl.github.io/2021/07/12/2-8/</a>
     </li>
     
     <li class="post-copyright-license">
