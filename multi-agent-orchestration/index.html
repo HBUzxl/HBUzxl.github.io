@@ -1,0 +1,356 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="张晓良的博客"><title>多 agent 编排——从 OpenCode 到 Oh-My-Opencode | 张晓良’s Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="https://unpkg.com/normalize.css"><link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss/build/pure-min.css"><link rel="stylesheet" type="text/css" href="https://unpkg.com/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.6.0/css/all.min.css"><script type="text/javascript" src="https://unpkg.com/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"><script type="text/javascript" src="https://unpkg.com/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="https://unpkg.com/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="https://unpkg.com/toastr/build/toastr.min.css"><meta name="generator" content="Hexo 8.1.1"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">多 agent 编排——从 OpenCode 到 Oh-My-Opencode</h1><a id="logo" href="/.">张晓良’s Blog</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/history/"><i class="fa fa-history"> 历史</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">多 agent 编排——从 OpenCode 到 Oh-My-Opencode</h1><div class="post-meta">2026-01-16<span> | </span><span class="category"><a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="post-content"><h2 id="1-背景介绍"><a href="#1-背景介绍" class="headerlink" title="1. 背景介绍"></a>1. 背景介绍</h2><p>随着大型语言模型（LLM）能力的飞速发展，我们正在进入一个由 AI Agent 驱动的软件开发新时代。Agent，作为能够自主理解、规划并执行复杂任务的智能实体，正逐渐从理论走向实践，深刻改变着开发者与代码交互的方式。从最初的单体 Agent 辅助编码，到如今由多个专业 Agent 协同作战，多 Agent 系统（Multi-Agent Systems）已成为提升开发效率、解决复杂软件工程问题的关键。</p>
+<h3 id="什么是agent"><a href="#什么是agent" class="headerlink" title="什么是agent"></a>什么是agent</h3><p>在人工智能领域，一个 <strong>AI Agent</strong>（智能体）可以被理解为一个能够感知其环境、进行自主决策并执行动作以实现特定目标的计算实体。不同于传统的程序，Agent 具备一定程度的自主性、反应性和社会性。一个典型的 Agent 系统由以下几个核心部分组成：</p>
+<ul>
+<li><strong>感知（Perception）</strong>：通过传感器或数据输入来获取环境状态信息。</li>
+<li><strong>决策（Decision-Making）</strong>：基于其内部知识、目标和感知到的信息，通过推理或学习来选择下一步的行动。</li>
+<li><strong>行动（Action）</strong>：通过执行器（如 API 调用、代码执行）来改变环境状态。</li>
+<li><strong>学习（Learning）</strong>：根据行动的反馈和结果来调整其内部模型和决策逻辑，以提升未来表现。</li>
+</ul>
+<p>对于编码 Agent 而言，其环境是代码库、IDE、终端和外部文档；其行动包括读取&#x2F;写入文件、执行命令、调用工具、与用户交互等；其目标则是根据用户指令完成软件开发任务，例如实现新功能、修复错误或重构代码。</p>
+<p>在当前大语言模型（LLM）的浪潮下，Agent 的概念被进一步发扬光大。LLM 成为了 Agent 强大的“大脑”，使其具备了前所未有的自然语言理解、推理和规划能力。一个基于 LLM 的 Agent 通常能够理解复杂的指令，拆解任务，调用外部工具（如搜索引擎、代码解释器、数据库），并根据结果进行下一步操作，从而完成比单纯的文本生成复杂得多的任务。</p>
+<blockquote>
+<p>Agent &#x3D; 感知 (Perception) + 规划 (Planning) + 行动 (Action)</p>
+</blockquote>
+<h3 id="为什么需要-Multi-Agent？"><a href="#为什么需要-Multi-Agent？" class="headerlink" title="为什么需要 Multi-Agent？"></a>为什么需要 Multi-Agent？</h3><p>随着任务复杂度的提升，单一的、全能型的 Agent 开始暴露出其局限性。</p>
+<table>
+<thead>
+<tr>
+<th>局限性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>任务类型单一</strong></td>
+<td>某个模型&#x2F;擅长某类任务，难以覆盖所有场景</td>
+</tr>
+<tr>
+<td><strong>上下文窗口限制</strong></td>
+<td>大型项目难以在一个会话中处理</td>
+</tr>
+<tr>
+<td><strong>并发能力缺失</strong></td>
+<td>无法同时处理多个独立任务</td>
+</tr>
+<tr>
+<td><strong>专业化缺失</strong></td>
+<td>缺乏特定领域的深度知识</td>
+</tr>
+<tr>
+<td><strong>验证不足</strong></td>
+<td>自己的工作难以自我验证</td>
+</tr>
+</tbody></table>
+<p>这与人类社会的发展类似，当任务超出个人能力范围时，就需要团队协作。<strong>多 Agent 系统（Multi-Agent System, MAS）</strong> 正是应对这一挑战的产物。它是一个由多个自主 Agent 组成的系统，这些 Agent 通过相互通信与协作来解决单个 Agent 难以甚至无法完成的复杂问题。</p>
+<p>引入多 Agent 架构主要有以下几点好处：</p>
+<ol>
+<li><p><strong>专业化分工（Specialization）</strong>：现实世界的任务往往需要多种不同的技能。例如，完成一个软件开发需求，可能需要产品经理进行需求分析、架构师进行系统设计、程序员进行编码、测试工程师进行质量保证。在多 Agent 系统中，我们可以设计具有不同“角色”和“专长”的 Agent，如“代码生成 Agent”、“代码审查 Agent”、“安全分析 Agent”等。每个 Agent 专注于其擅长的领域，从而提升整体的效率和产出质量。</p>
+</li>
+<li><p><strong>可扩展性与可维护性（Scalability &amp; Maintainability）</strong>：在单 Agent 系统中增加新功能，往往意味着对其核心 Prompt 和逻辑进行复杂且风险较高的修改。而在多 Agent 系统中，增加新能力通常只需要引入一个新的、具有特定技能的 Agent 即可，对现有系统的侵入性更小。这种模块化的设计使得系统更易于扩展和维护。</p>
+</li>
+<li><p><strong>并行与效率（Parallelism &amp; Efficiency）</strong>：对于可以分解的子任务，多 Agent 系统可以并行执行，显著缩短任务完成时间。例如，在进行技术选型时，可以同时派出多个 Agent 分别研究不同方案的优缺点，然后汇总报告，这远比单个 Agent 依次研究要高效得多。</p>
+</li>
+<li><p><strong>鲁棒性与可靠性（Robustness &amp; Reliability）</strong>：通过引入冗余或多样化的 Agent，系统可以对冲单个 Agent 失败或表现不佳的风险。例如，可以设计一个“评审 Agent”，对其他 Agent 的产出进行检查和验证，形成制衡，从而提高最终结果的可靠性。</p>
+</li>
+</ol>
+<p>正是这些优势，使得多 Agent 系统成为构建下一代智能编码工具的核心架构选择。接下来，我们将深入探讨实现多 Agent 协作的关键——<strong>Agent 编排</strong>。</p>
+<h2 id="多-Agent-编排"><a href="#多-Agent-编排" class="headerlink" title="多 Agent 编排"></a>多 Agent 编排</h2><h3 id="什么是multi-agent"><a href="#什么是multi-agent" class="headerlink" title="什么是multi agent"></a>什么是multi agent</h3><p>多 Agent 系统的核心挑战在于<strong>编排（Orchestration</strong>）——即如何有效地组织和协调多个 Agent 的行为，使其能够作为一个整体高效协作。它定义了 Agent 之间如何分配任务、共享信息、解决冲突以及整合各自的工作成果。一个优秀的编排系统是多 Agent 系统成功的关键，它如同一个经验丰富的项目经理或技术总监，确保整个“Agent 团队”能够高效、有序地运作。</p>
+<h3 id="主流编排模式"><a href="#主流编排模式" class="headerlink" title="主流编排模式"></a>主流编排模式</h3><p>业界已经探索出多种成熟的 Agent 编排模式，每种模式针对不同的任务复杂度、上下文管理需求和协作方式，适用于不同的场景。根据 LangChain 和微软 Azure 等机构的总结，目前主流的编排模式可以归纳为以下几种 [2][3]：</p>
+<table>
+<thead>
+<tr>
+<th align="left">编排模式</th>
+<th align="left">核心思想</th>
+<th align="left">适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>顺序编排 (Sequential)</strong></td>
+<td align="left">Agent 像流水线一样按预定顺序依次执行，每个 Agent 处理上一个 Agent 的输出。</td>
+<td align="left">具有明确线性依赖关系的多阶段流程，如“草稿-审查-发布”的内容生成管道。</td>
+</tr>
+<tr>
+<td align="left"><strong>并发编排 (Concurrent)</strong></td>
+<td align="left">多个 Agent 同时对同一任务进行独立处理，最后由一个聚合器整合结果。</td>
+<td align="left">需要从多个独立视角进行分析或评估的任务，如对一个技术方案进行多维度评审。</td>
+</tr>
+<tr>
+<td align="left"><strong>群聊编排 (Group Chat)</strong></td>
+<td align="left">多个 Agent 在一个共享的对话空间中进行开放式讨论和协作，类似于人类的团队会议。</td>
+<td align="left">需要集思广益、迭代创新的复杂问题，如系统架构设计或头脑风暴。</td>
+</tr>
+<tr>
+<td align="left"><strong>交接编排 (Handoff)</strong></td>
+<td align="left">Agent 根据任务的当前状态和需求，动态地将控制权“交接”给最合适的下一个 Agent。</td>
+<td align="left">任务流程不固定，需要根据中间结果进行动态路由的场景。</td>
+</tr>
+</tbody></table>
+<h4 id="Sequential-orchestration"><a href="#Sequential-orchestration" class="headerlink" title="Sequential orchestration"></a>Sequential orchestration</h4><p>将多个 Agent 按照预定义的线性顺序连接起来，形成一个处理管道。</p>
+<p>每个 Agent 的输出是下一个 Agent 的输入，类似于工厂流水线。</p>
+<p>具有明确前后依赖关系的多阶段任务，如“草稿-审查-润色”流程。</p>
+<p>优点：简单直观，易于实现和管理。<br>缺点：灵活性差，不支持并行、分支或迭代。</p>
+<p> <img src="/vx_images/484254806952463.png"></p>
+<h4 id="Subagents-Centralized-orchestration"><a href="#Subagents-Centralized-orchestration" class="headerlink" title="Subagents: Centralized orchestration"></a>Subagents: Centralized orchestration</h4><p>由一个中心化的智能体（Supervisor／Coordinator）负责总体控制，调用多个“子智能体”作为工具执行具体子任务。</p>
+<p>主管 Agent 将子 Agent 作为“工具”来调用，负责收集结果并进行最终决策。子 Agent 通常是无状态的。</p>
+<p>子智能体不自己保存历史对话或状态；主智能体统一组合结果并返回</p>
+<p>优点：控制力强，易于追踪任务状态。<br>缺点：主管 Agent 容易成为性能瓶颈，所有通信都需经过中心节点，延迟较高。</p>
+<p><img src="/vx_images/110925763401614.png"></p>
+<h4 id="Skills-Progressive-disclosure"><a href="#Skills-Progressive-disclosure" class="headerlink" title="Skills: Progressive disclosure"></a>Skills: Progressive disclosure</h4><p>不是严格意义上的多智能体，而是一个智能体根据任务动态加载不同“技能包（Skill）”，这些技能包封装了特定能力的提示、指令和资源。</p>
+<p>单一智能体需具备多种专业能力；</p>
+<p>Skill 被加载后会进入对话历史</p>
+<p>多次调用后容易出现上下文膨胀（token 累积）</p>
+<p><img src="/vx_images/343395396633092.png"></p>
+<h4 id="Handoffs-State-driven-transitions"><a href="#Handoffs-State-driven-transitions" class="headerlink" title="Handoffs: State-driven transitions"></a>Handoffs: State-driven transitions</h4><p>控制权在不同的 Agent 之间根据预设的条件进行转移，形成一个状态机，实现分阶段、顺序性工作流。</p>
+<p>每个 Agent 完成自己的阶段性任务后，将控制权和相关状态“交接”给下一个指定的 Agent。</p>
+<p>具有明确阶段划分和状态转换的流程，如客户支持、多步表单填写。	</p>
+<p>优点：流程清晰，状态管理明确，适合顺序解锁能力的场景。<br>缺点：状态管理更复杂，需要精心设计状态存储与切换逻辑。</p>
+<p><img src="/vx_images/524695141655730.png"></p>
+<h4 id="Router-Parallel-dispatch-and-synthesis"><a href="#Router-Parallel-dispatch-and-synthesis" class="headerlink" title="Router: Parallel dispatch and synthesis"></a>Router: Parallel dispatch and synthesis</h4><p>通过一个 Router Agent 对请求进行分类或拆解，并将子任务 并行分发 给多个专用 Agent，并对返回的结果进行综合。</p>
+<p>需要根据输入类型动态选择处理路径，或需要并行查询多个信息源的场景。	</p>
+<p>优点：并行效率高，可扩展性好。<br>缺点：如果需要维护对话历史，会产生重复的路由开销。</p>
+<p><img src="/vx_images/123226662304930.png"></p>
+<h4 id="Group-Chat"><a href="#Group-Chat" class="headerlink" title="Group Chat"></a>Group Chat</h4><p>多个 Agent 在一个共享的对话空间中进行交互，每个 Agent 都能看到其他 Agent 的发言并作出反应。</p>
+<p>类似于人类的团队会议，通过多轮对话和讨论来共同解决问题。通常需要一个“管理员”来引导流程。</p>
+<p>需要动态、复杂交互和集体决策的探索性任务。	</p>
+<p>优点：高度灵活，能够模拟复杂的协作模式。<br>缺点：难以控制流程，容易出现无效讨论或循环，对 Agent 的协作能力要求高。</p>
+<p><img src="/vx_images/21456100051111.png"></p>
+<h3 id="主流编排框架比较"><a href="#主流编排框架比较" class="headerlink" title="主流编排框架比较"></a>主流编排框架比较</h3><p>除了理论模型，社区也涌现出多个优秀的开源框架，旨在简化多 Agent 系统的开发。其中，<code>LangGraph</code>、<code>CrewAI</code> 和 <code>AutoGen</code> 是目前最受关注的几个框架。</p>
+<ul>
+<li><p><strong>LangGraph</strong>: 由 LangChain 团队开发，它将多 Agent 协作流程建模为图（Graph），其中每个节点代表一个 Agent 或一个工具。这种方式为定义复杂的、带有循环和条件分支的工作流提供了极大的灵活性和控制力。</p>
+</li>
+<li><p><strong>CrewAI</strong>: 专注于通过角色扮演来定义 Agent 的能力和职责。它提供了一种高度声明式的方法来组建“Agent 团队”，强调的是 Agent 的角色定位和团队协作流程。</p>
+</li>
+<li><p><strong>AutoGen</strong>: 由微软研究院推出，其核心理念是让 Agent 通过对话进行协作。它擅长构建能够自动进行多轮对话、协商和共同解决问题的 Agent 系统。</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">维度</th>
+<th align="left">AutoGen (Microsoft)</th>
+<th align="left">CrewAI</th>
+<th align="left">LangGraph (LangChain)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>核心理念</strong></td>
+<td align="left"><strong>对话驱动</strong></td>
+<td align="left"><strong>角色驱动</strong></td>
+<td align="left"><strong>图结构驱动</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>架构隐喻</strong></td>
+<td align="left">多个 Agent 通过对话进行协作</td>
+<td align="left">一个分工明确的“小公司”或“团队”</td>
+<td align="left">流程图或状态机</td>
+</tr>
+<tr>
+<td align="left"><strong>设计特点</strong></td>
+<td align="left">以“对话”为中心，Agent 间通过消息传递进行协作，支持灵活的对话模式和人机混合。</td>
+<td align="left">强调“角色”（Role）、“职责”（Duty）和“任务”（Task）的定义，流程固定为“规划-执行-验证”。</td>
+<td align="left">将多 Agent 协作流程建模为图（Graph），每个节点（Node）是一个 Agent 或工具，边（Edge）代表流程的走向，支持复杂的条件分支和循环。</td>
+</tr>
+<tr>
+<td align="left"><strong>适用场景</strong></td>
+<td align="left">探索性任务、快速原型验证、需要人类参与的复杂对话系统。</td>
+<td align="left">目标明确、流程固定的业务自动化任务，如市场分析报告生成、邮件自动化处理等。</td>
+<td align="left">需要对工作流进行精细控制的复杂、动态任务，如需要条件判断、迭代修改的软件开发流程。</td>
+</tr>
+<tr>
+<td align="left"><strong>优缺点</strong></td>
+<td align="left"><strong>优点</strong>：灵活，易于上手，非常适合模拟人类协作。<br><strong>缺点</strong>：流程控制相对困难，容易陷入无效对话。</td>
+<td align="left"><strong>优点</strong>：概念清晰，结构化强，易于理解和管理。<br><strong>缺点</strong>：流程相对固定，灵活性不足。</td>
+<td align="left"><strong>优点</strong>：控制力最强，高度灵活和可定制。<br><strong>缺点</strong>：学习曲线最陡峭，需要开发者具备图的思维模式。</td>
+</tr>
+</tbody></table>
+<h2 id="从-OpenCode-到-Oh-My-OpenCode"><a href="#从-OpenCode-到-Oh-My-OpenCode" class="headerlink" title="从 OpenCode 到 Oh-My-OpenCode"></a>从 OpenCode 到 Oh-My-OpenCode</h2><p>OpenCode 作为一个开源的 AI 编码 Agent，提供了一个坚实的基础平台。而 Oh My OpenCode 作为其社区驱动的增强插件，则在多 Agent 协作与编排方面进行了大刀阔斧的创新，为我们展示了从“单兵作战”到“团队协同”的进化路径。</p>
+<h3 id="OpenCode"><a href="#OpenCode" class="headerlink" title="OpenCode"></a>OpenCode</h3><h4 id="架构设计"><a href="#架构设计" class="headerlink" title="架构设计"></a>架构设计</h4><p>OpenCode 采用了经典的<strong>客户端-服务器（Client-Server）架构</strong>，这使其具备了良好的跨平台能力和远程协作潜力。其 Agent 系统设计简洁而高效，主要包含两类主 Agent 和一系列辅助性子 Agent。</p>
+<ul>
+<li><p><strong>主 Agent (Primary Agents)</strong>：这是用户直接交互的核心。<code>build</code> Agent 拥有完整的开发权限，负责执行代码修改、文件操作等任务；而 <code>plan</code> Agent 则是一个只读的“分析师”，用于在不产生副作用的前提下探索代码库和规划任务，体现了安全性的考量。</p>
+</li>
+<li><p><strong>子 Agent (Subagents)</strong>：作为主 Agent 的“工具”存在。例如，<code>general</code> Agent 用于处理复杂的多步研究任务，而 <code>explore</code> Agent 则专注于快速的代码库搜索。这些子 Agent 在被调用时执行特定任务，但本身不维护长期状态，其生命周期由主 Agent 完全控制。</p>
+</li>
+</ul>
+<p>这种设计本质上是<strong>中心化编排模式（Coordinator&#x2F;Subagents）</strong> 的一种实现。主 Agent 如同大脑，负责思考和决策，子 Agent 如同四肢，负责执行。所有任务流、信息流都汇聚于主 Agent，由其统一调度。这种模式简单、可控，但主 Agent 容易成为能力的上限和性能的瓶颈。</p>
+<p><img src="/vx_images/362806058679072.png"></p>
+<h4 id="可拓展性"><a href="#可拓展性" class="headerlink" title="可拓展性"></a>可拓展性</h4><p>OpenCode 的前瞻性在于其对扩展性的重视。它通过两大协议来构建其开放生态：</p>
+<ul>
+<li><strong>Agent Client Protocol (ACP)</strong>：这是一套基于 JSON-RPC 的标准化协议，允许第三方开发者将自己的 Agent 接入 OpenCode 的生态系统。这为我们自己的产品集成提供了标准接口。</li>
+<li><strong>Model Context Protocol (MCP)</strong>：该协议旨在标准化 Agent 与外部工具（如 API、数据库）的交互。通过 MCP，我们可以将公司内部的各种服务（如代码分析工具、知识库）封装成 Agent 可用的“工具”，实现能力的复用。</li>
+</ul>
+<p>此外，其内置的<strong>细粒度权限系统（PermissionNext）</strong>，允许对文件访问、命令执行等敏感操作进行 <code>allow</code>、<code>deny</code>、<code>ask</code> 三种级别的控制，为 Agent 的安全运行提供了保障。</p>
+<h3 id="Oh-My-OpenCode"><a href="#Oh-My-OpenCode" class="headerlink" title="Oh-My-OpenCode"></a>Oh-My-OpenCode</h3><h4 id="架构设计-1"><a href="#架构设计-1" class="headerlink" title="架构设计"></a>架构设计</h4><p>如果说 OpenCode 是一个能力全面的“全栈工程师”，那么 Oh My OpenCode 则构建了一个各司其职、高效协作的“精英技术团队”。它在 OpenCode 的基础上，引入了更为复杂的分布式协作架构。</p>
+<p>Oh My OpenCode 的核心是名为 <strong>Sisyphus</strong> 的主编排 Agent。它的角色不再是亲力亲为的执行者，而是一位经验丰富的“技术主管”或“架构师”。其核心职责是<strong>理解用户意图、分解复杂任务，并将其委派给最合适的专家 Agent</strong>。Sisyphus 的工作流程被设计为多阶段的决策过程：</p>
+<ol>
+<li><strong>意图识别</strong>：首先判断用户请求的类型（是简单的问答，还是复杂的开发任务？）。</li>
+<li><strong>代码库评估</strong>：对于开放式任务，它会先评估当前项目的代码质量和风格，以决定后续工作的策略。</li>
+<li><strong>委派决策</strong>：这是最关键的一步。Sisyphus 根据任务的性质，决定是将其分配给一个具有特定“类别（Category）”的通用开发 Agent，还是直接指派给一个高度专业化的 Agent。</li>
+</ol>
+<h4 id="Agent-类型"><a href="#Agent-类型" class="headerlink" title="Agent 类型"></a>Agent 类型</h4><p>Oh My OpenCode 的强大之处在于其丰富的专家 Agent 团队。每个 Agent 都有明确的职责和推荐使用的模型，以达到最佳性价比和效果。</p>
+<table>
+<thead>
+<tr>
+<th><br></th>
+<th><br></th>
+<th><br></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Agent 角色</td>
+<td>模型</td>
+<td>核心职责</td>
+</tr>
+<tr>
+<td>Sisyphus</td>
+<td><code>Claude Opus 4.5</code></td>
+<td>核心编排者，负责任务的执行和委派。</td>
+</tr>
+<tr>
+<td>Prometheus</td>
+<td><code>Claude Opus 4.5</code></td>
+<td>规划者，负责制定工作计划。</td>
+</tr>
+<tr>
+<td>Oracle</td>
+<td><code>GPT-5.2 Medium</code></td>
+<td>架构师&#x2F;调试专家，提供高层次的调试和复杂问题分析。</td>
+</tr>
+<tr>
+<td>Frontend UI&#x2F;UX Engineer</td>
+<td><code>Gemini 3 Pro Preview</code></td>
+<td>前端专家，负责视觉设计和 UI 实现。</td>
+</tr>
+<tr>
+<td>Document-Writer</td>
+<td><code>Gemini 3 Pro Preview</code></td>
+<td>技术文档撰写</td>
+</tr>
+<tr>
+<td>MultiModal Looker</td>
+<td><code>Gemini 3 Flash</code></td>
+<td>PDF&#x2F; 图像等多模态内容分析</td>
+</tr>
+<tr>
+<td>Librarian</td>
+<td><code>GLM-4.7</code></td>
+<td>研究员，多仓库分析，文档检索与整理。</td>
+</tr>
+<tr>
+<td>Explore</td>
+<td><code>Grok Code</code></td>
+<td>代码上下文探索</td>
+</tr>
+<tr>
+<td>Metis &amp; Momus</td>
+<td><code>Claude Sonnet 4.5</code></td>
+<td>顾问与审查者，负责在规划阶段进行预分析、风险识别和计划校验。</td>
+</tr>
+</tbody></table>
+<h4 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h4><p><code>Oh My OpenCode</code> 设计了一套完整的工作流，将用户的模糊意图转化为精确的代码实现。这个过程被清晰地划分为三个阶段：</p>
+<p><strong>阶段一：访谈与规划 (Interview &amp; Planning)</strong></p>
+<ul>
+<li><strong>过程</strong>: Prometheus Agent 接管，通过提问、分析现有代码（调用 <code>explore</code> Agent）和查阅文档（调用 <code>librarian</code> Agent），与用户共同明确需求，并将所有讨论内容记录在 <code>.sisyphus/drafts/</code> 目录下。</li>
+<li><strong>产出</strong>: 一份详尽、结构化的任务计划 <code>Markdown</code> 文件，存放在 <code>.sisyphus/plans/</code> 目录下。</li>
+</ul>
+<p><strong>阶段二：计划审查 (Plan Review)</strong></p>
+<ul>
+<li><strong>过程</strong>: Momus 对 Prometheus 生成的计划进行严格审查，如果发现任何模糊、遗漏或不合理之处，会拒绝该计划并要求 Prometheus 重新修订，直到计划完美无缺。</li>
+</ul>
+<p><strong>阶段三：执行 (Execution)</strong></p>
+<ul>
+<li><strong>过程</strong>: Sisyphus Agent 读取最终确定的计划，并创建一个 <code>boulder.json</code> 文件来跟踪任务状态。然后，它会逐一处理计划中的 TODO 事项，通过 <code>sisyphus_task()</code> 函数将具体的子任务委派给最合适的专业 Agent（如将 UI 任务交给 <code>frontend-ui-ux-engineer</code>）。</li>
+<li><strong>特点</strong>: 整个执行过程是<strong>持续的、可恢复的</strong>。即使会话中断，Sisyphus 也能通过 <code>boulder.json</code> 在下次启动时从中断处继续执行。</li>
+</ul>
+<p><img src="/vx_images/380909485572362.png"></p>
+<h4 id="sisyphus-task：编排的核心工具"><a href="#sisyphus-task：编排的核心工具" class="headerlink" title="sisyphus_task：编排的核心工具"></a><code>sisyphus_task</code>：编排的核心工具</h4><p>Sisyphus 通过 <code>sisyphus_task</code> 这一核心工具来下达指令。该工具的设计精妙地体现了其编排思想：</p>
+<ul>
+<li><strong>Category 模式</strong>：对于通用的开发任务，Sisyphus 可以指定一个“类别”，如 <code>visual-engineering</code>（前端视觉）或 <code>ultrabrain</code>（后端逻辑）。系统会据此动态生成一个名为 <code>Sisyphus-Junior-{category}</code> 的子 Agent 来执行任务。这类似于为项目临时组建一个“功能小组”。</li>
+<li><strong>Agent 模式</strong>：对于需要特定专家能力的，Sisyphus 可以直接指定 Agent 名称，如 <code>subagent_type=&quot;oracle&quot;</code>，将任务直接委派给专家。</li>
+</ul>
+<h4 id="后台任务并行执行"><a href="#后台任务并行执行" class="headerlink" title="后台任务并行执行"></a>后台任务并行执行</h4><p>Oh My OpenCode 最具突破性的创新之一是其<strong>后台任务系统（Background Task System）</strong>。当 Sisyphus 发出指令时，可以通过 <code>run_in_background=true</code> 参数，让子 Agent 在一个独立的后台会话中执行任务。这意味着 Sisyphus 可以同时委派多个研究或探索性任务，实现真正的并行工作，极大地提升了信息收集和分析的效率。这套系统包含了完整的任务生命周期管理、并发控制和完成通知机制，是一个工业级的实现。</p>
+<h4 id="技能系统与通信机制"><a href="#技能系统与通信机制" class="headerlink" title="技能系统与通信机制"></a>技能系统与通信机制</h4><ul>
+<li><p><strong>技能系统 (Skills)</strong>：Oh My OpenCode 引入了“技能”的概念，这是一些可复用的、针对特定任务的指令集（如 <code>frontend-ui-ux</code>、<code>playwright</code>）。在委派任务时，Sisyphus 可以为子 Agent “装备”上相应的技能，从而更精确地指导其行为。</p>
+</li>
+<li><p><strong>通信机制</strong>：Oh My OpenCode 的通信是<strong>异步和事件驱动</strong>的。每个后台任务都在独立的会话中运行，通过会话 ID 与父会话关联。任务完成后，通过事件通知 Sisyphus。这种设计解除了主 Agent 与子 Agent 之间的紧耦合，是实现高并发、分布式协作的基础。</p>
+</li>
+</ul>
+<h3 id="OpenCode-对比-Oh-My-OpenCode"><a href="#OpenCode-对比-Oh-My-OpenCode" class="headerlink" title="OpenCode 对比 Oh-My-OpenCode"></a>OpenCode 对比 Oh-My-OpenCode</h3><table>
+<thead>
+<tr>
+<th align="left">维度</th>
+<th align="left">OpenCode</th>
+<th align="left">Oh My OpenCode</th>
+<th align="left">设计演进</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>编排模式</strong></td>
+<td align="left">中心化编排 (Coordinator)</td>
+<td align="left">分布式协作 + 中心化委派 (Hybrid)</td>
+<td align="left">从“主管-员工”模式演变为“项目经理-专家团队”模式。</td>
+</tr>
+<tr>
+<td align="left"><strong>Agent 角色</strong></td>
+<td align="left">通用执行者 + 辅助工具</td>
+<td align="left">战略编排者 + 高度专业化的专家</td>
+<td align="left">职责更加细分，专业化程度显著提高。</td>
+</tr>
+<tr>
+<td align="left"><strong>并行能力</strong></td>
+<td align="left">有限（依赖于主 Agent 的工具调用方式）</td>
+<td align="left">完整的后台任务系统，支持真并行</td>
+<td align="left">从顺序执行演变为并行执行，效率大幅提升。</td>
+</tr>
+<tr>
+<td align="left"><strong>状态管理</strong></td>
+<td align="left">主 Agent 集中管理</td>
+<td align="left">分布式状态，每个子 Agent 拥有独立会话</td>
+<td align="left">状态管理下沉，降低了中心节点的复杂性，提高了可扩展性。</td>
+</tr>
+<tr>
+<td align="left"><strong>通信方式</strong></td>
+<td align="left">同步工具调用</td>
+<td align="left">异步消息 + 事件驱动</td>
+<td align="left">从紧耦合的同步调用演变为松耦合的异步通信，适应分布式系统。</td>
+</tr>
+</tbody></table>
+<p>通过对比可以看出，Oh My OpenCode 并非简单地对 OpenCode 进行功能增强，而是在其基础上进行了一次深刻的<strong>架构范式升级</strong>。它从一个强大的“个人英雄”，演变成一个懂得如何“领导团队”的“卓越领导者”，其设计思想更贴近于解决真实世界中复杂软件工程问题所需要的团队协作模式。</p>
+<h4 id="ultrawork："><a href="#ultrawork：" class="headerlink" title="ultrawork："></a><code>ultrawork</code>：</h4><p><code>Oh My OpenCode</code> 认识到，并非所有任务都需要用户深度参与规划。为此，它提供了一个名为 <code>ultrawork</code>（或 <code>ulw</code>）的“魔法词”。当用户在提示中包含这个词时，相当于将整个“规划-执行”流程完全委托给 Agent 系统自动完成。这极大地降低了使用门槛，让用户在不想关心细节时，也能享受到多 Agent 编排带来的强大能力。</p>
+<h2 id="讨论-总结"><a href="#讨论-总结" class="headerlink" title="讨论 &amp; 总结"></a>讨论 &amp; 总结</h2><p>引入多 agent 并发执行</p>
+<p>并行多个agent同时开发，最后审核对比</p>
+<p>用的比较多的 CLI 工具</p>
+<p>opencode 有哪些心得&#x2F;好用的点&#x2F;不好用的点</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><p>LangChain. (2026, January 14). <strong>Choosing the Right Multi-Agent Architecture</strong>. LangChain Blog. <a target="_blank" rel="noopener" href="https://www.blog.langchain.com/choosing-the-right-multi-agent-architecture/">https://www.blog.langchain.com/choosing-the-right-multi-agent-architecture/</a></p>
+</li>
+<li><p>Microsoft. (2025, July 18). <strong>AI Agent Orchestration Patterns</strong>. Azure Architecture Center: <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/ai-agent-design-patterns">https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/ai-agent-design-patterns</a></p>
+</li>
+<li><p>Anthropic (2025, Jun 13). <strong>How we built our multi-agent research system</strong>: <a target="_blank" rel="noopener" href="https://www.anthropic.com/engineering/multi-agent-research-system?ref=blog.langchain.com">https://www.anthropic.com/engineering/multi-agent-research-system?ref=blog.langchain.com</a></p>
+</li>
+<li><p><strong>Oh-My-Opencode</strong>: <a target="_blank" rel="noopener" href="https://github.com/code-yeongyu/oh-my-opencode">https://github.com/code-yeongyu/oh-my-opencode</a></p>
+</li>
+<li><p><strong>OpenCode</strong>: <a target="_blank" rel="noopener" href="https://github.com/anomalyco/opencode">https://github.com/anomalyco/opencode</a></p>
+</li>
+<li><p><strong>opencode security page</strong>：<a target="_blank" rel="noopener" href="https://github.com/anomalyco/opencode/security">https://github.com/anomalyco/opencode/security</a></p>
+</li>
+</ul>
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/hello-world/">Hello World</a><a class="next" href="/2025-year-review/">2025年终总结</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="https://hbuzxl.github.io"/></form></div><div class="widget"><div class="author-info"><a class="info-avatar" href="/about/" title="关于"><img class="nofancybox" src="/img/avatar.jpg"/></a><p>Have a good day.</p><a class="info-icon" href="https://x.com/HelloWorld417_" title="X/Twitter" target="_blank" style="margin-inline:5px"><i class="fa-brands fa-x-twitter" style="margin-inline:5px"></i></a><a class="info-icon" href="mailto:zxl2024@qq.com" title="Email" target="_blank" style="margin-inline:5px"><i class="fa-regular fa-envelope" style="margin-inline:5px"></i></a><a class="info-icon" href="https://github.com/HBUzxl" title="Github" target="_blank" style="margin-inline:5px"><i class="fa-brands fa-github" style="margin-inline:5px"></i></a><a class="info-icon" href="https://weibo.com/u/7529198802" title="Weibo" target="_blank" style="margin-inline:5px"><i class="fa-brands fa-weibo" style="margin-inline:5px"></i></a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B9%A6%E4%B8%8E%E7%94%B5%E5%BD%B1/">书与电影</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">年终总结</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/%E7%94%B5%E5%BD%B1/" style="font-size: 15px;">电影</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/multi-agent-orchestration/">多 agent 编排——从 OpenCode 到 Oh-My-Opencode</a></li><li class="post-list-item"><a class="post-list-link" href="/2025-year-review/">2025年终总结</a></li><li class="post-list-item"><a class="post-list-link" href="/movie-review-intouchables/">观影报告:触不可及</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="https://hbuzxl.github.io/" title="张晓良‘s Blog" target="_blank">张晓良‘s Blog</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer"><div id="site-time-container"><span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span><script>function createtime() {
+  var now = new Date();
+  var startDate = "2021-08-15 15:38:00";
+  var grt = new Date(startDate.replace(/-/g, '/'));
+  var nowTime = now.getTime();
+  var grtTime = grt.getTime();
+  var diff = nowTime - grtTime;
+  var dnum = Math.floor(diff / 1000 / 60 / 60 / 24);
+  var hnum = Math.floor((diff / 1000 / 60 / 60) % 24);
+  var mnum = Math.floor((diff / 1000 / 60) % 60);
+  var snum = Math.floor((diff / 1000) % 60);
+  if(String(hnum).length == 1) { hnum = "0" + hnum; }
+  if(String(mnum).length == 1) { mnum = "0" + mnum; }
+  if(String(snum).length == 1) { snum = "0" + snum; }
+  document.getElementById("timeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+  document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+}
+setInterval("createtime()", 1000);</script></div><div>Copyright © 2026 <a href="/." rel="nofollow">张晓良’s Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="https://unpkg.com/@fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0" async></script><link rel="stylesheet" type="text/css" href="https://unpkg.com/@fancyapps/fancybox/dist/jquery.fancybox.min.css"><script type="text/javascript" src="/js/copycode.js?v=1.0.0" successtext="复制成功！"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css?v=1.0.0"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script></div></body></html>
