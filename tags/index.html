@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="theme-color" content="#ffffff">
+  <script>(function () {
+    var t;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.dataset.theme = t;
+    document.querySelector('meta[name="theme-color"]').content = t === 'dark' ? '#121417' : '#ffffff';
+  })();</script>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="张晓良的博客">
+  <title>标签</title>
+  <meta property="og:title" content="标签">
+  <meta property="og:description" content="张晓良的博客">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hbuzxl.github.io/tags/">
+  <link rel="canonical" href="https://hbuzxl.github.io/tags/">
+  <meta property="og:site_name" content="张晓良の部落格">
+  <meta name="twitter:card" content="summary">
+  
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="张晓良の部落格" type="application/atom+xml">
+</head>
+
+<body>
+  <main class="page-content" aria-label="Content">
+    <div class="w">
+      <header class="masthead">
+  <a class="site-title" href="/">张晓良の部落格</a>
+  
+
+<nav class="nav">
+  <a href="/">主页</a><a href="/archives/">归档</a><a href="/categories/">分类</a><a href="/about/">关于</a>
+  <button class="theme" type="button" aria-label="切换明暗主题" title="切换明暗主题"><svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.39 5.39 0 0 1-4.4 2.26 5.4 5.4 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg><svg class="icon-sun" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zM2 13h2a1 1 0 0 0 0-2H2a1 1 0 0 0 0 2zm18 0h2a1 1 0 0 0 0-2h-2a1 1 0 0 0 0 2zM11 2v2a1 1 0 0 0 2 0V2a1 1 0 0 0-2 0zm0 18v2a1 1 0 0 0 2 0v-2a1 1 0 0 0-2 0zM5.99 4.58a1 1 0 0 0-1.41 1.41l1.06 1.06a1 1 0 0 0 1.41-1.41L5.99 4.58zm12.37 12.37a1 1 0 0 0-1.41 1.41l1.06 1.06a1 1 0 0 0 1.41-1.41l-1.06-1.06zm1.06-10.96a1 1 0 0 0-1.41-1.41l-1.06 1.06a1 1 0 0 0 1.41 1.41l1.06-1.06zM7.05 18.36a1 1 0 0 0-1.41-1.41l-1.06 1.06a1 1 0 0 0 1.41 1.41l1.06-1.06z"/></svg></button>
+</nav>
+
+
+</header>
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.querySelector('.theme');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    document.querySelector('meta[name="theme-color"]').content = next === 'dark' ? '#121417' : '#ffffff';
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+})();
+</script>
+
+      <h1>标签</h1>
+
+<ul>
+  
+  <li><a href="/tags/%E6%97%85%E6%B8%B8/">旅游</a> (1)</li>
+  
+  <li><a href="/tags/%E7%94%B5%E5%BD%B1/">电影</a> (1)</li>
+  
+</ul>
+
+      
+<footer class="site-footer"><p>Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> · <a href="/atom.xml">RSS</a> · Theme <a target="_blank" rel="noopener" href="https://github.com/HBUzxl/hexo-theme-nostyleplease">nostyleplease</a></p>
+</footer>
+
+
+    </div>
+  </main>
+</body>
+
+</html>
