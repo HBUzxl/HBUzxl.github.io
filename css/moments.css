@@ -13,29 +13,60 @@
   color: var(--muted);
 }
 
+/* 上次同步时间（数据里最新一条微博距今多久） */
+.moments-sync {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.moments-sync-standalone {
+  margin: 0 0 2.5rem;
+}
+
 .moments {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-/* 年份索引（微博数据跨度长，方便跳转） */
-.moments-index {
+/* 年份索引：宽屏时固定在正文右侧（样式与文章目录 .floating-toc 一致） */
+.moments-years {
+  position: fixed;
+  top: 200px;
+  left: calc(50% + 380px + 1.5rem);
+  right: 20px;
+  min-width: 60px;
+  max-width: 300px;
+  max-height: calc(100vh - 240px);
+  padding: 0.5rem 0 0.5rem 1rem;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem 1rem;
-  margin: 0 0 2.25rem;
+  flex-direction: column;
+  gap: 0.2rem;
+  overflow-y: auto;
+  scrollbar-width: none;
+  box-shadow: inset 1px 0 0 rgba(128, 128, 128, 0.35);
   font-family: var(--mono);
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.6;
 }
 
-.moments-index a {
-  color: var(--muted);
-}
+.moments-years::-webkit-scrollbar { display: none; }
 
-.moments-index a:hover {
+.moments-years a { color: var(--muted); }
+
+/* 和顶部导航一致：hover / 当前年份变黑，当前项再加粗一档 */
+.moments-years a:hover,
+.moments-years a[aria-current] {
   color: var(--fg);
   text-decoration: none;
+}
+
+.moments-years a[aria-current] { font-weight: 600; }
+
+@media (max-width: 1280px) {
+  .moments-years { display: none; }
 }
 
 /* --- 单条动态 --- */
@@ -59,17 +90,16 @@
   font-size: 0.8rem;
   line-height: 1.55;
   font-variant-numeric: tabular-nums;
+  scroll-margin-top: 1rem;
+}
+
+/* 年份锚点落在整列时间上：跳转时不要整列变高亮色（main.css 的 *:target） */
+.moment-time:target {
+  background: none;
 }
 
 .moment-time time {
   color: var(--fg);
-}
-
-/* 年份放在页边注里，代替原来的通栏分隔线 */
-.moment-year {
-  margin-bottom: 0.1rem;
-  color: var(--fg);
-  font-weight: 600;
 }
 
 .moment.year-start {
