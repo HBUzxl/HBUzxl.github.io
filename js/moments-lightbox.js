@@ -23,10 +23,8 @@
 
   function show(i) {
     index = (i + group.length) % group.length
-    var link = group[index]
-    var thumb = link.querySelector('img')
-    img.src = link.getAttribute('href')
-    img.alt = (thumb && thumb.alt) || ''
+    img.src = group[index]
+    img.alt = ''
     var multi = group.length > 1
     prev.hidden = !multi
     next.hidden = !multi
@@ -34,8 +32,18 @@
 
   function open(link) {
     var box = link.closest('.moment-images')
-    group = Array.prototype.slice.call(box.querySelectorAll('.moment-photo'))
-    show(group.indexOf(link))
+    var links = Array.prototype.slice.call(box.querySelectorAll('.moment-photo'))
+    var extra = []
+    try {
+      extra = JSON.parse(box.getAttribute('data-extra') || '[]')
+    } catch (e) {
+      extra = []
+    }
+    if (!Array.isArray(extra)) extra = []
+    // 已显示的 9 张 + 被 +N 折叠的剩余图片，按顺序拼接
+    group = links.map(function (a) { return a.getAttribute('href') }).concat(extra)
+    var at = links.indexOf(link)
+    show(at < 0 ? 0 : at)
     document.documentElement.classList.add('lightbox-open')
     dialog.showModal()
     dialog.focus()

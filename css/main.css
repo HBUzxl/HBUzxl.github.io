@@ -90,6 +90,9 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--muted);
 }
 
+/* 分类前加 #，多个分类时更容易分辨 */
+.post-meta a::before { content: '#'; }
+
 .post-meta a:hover { color: var(--link); }
 
 .post-meta .sep { margin: 0 0.35rem; }
