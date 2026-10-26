@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="theme-color" content="#ffffff">
+  <script>(function () {
+    var t;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.dataset.theme = t;
+    document.querySelector('meta[name="theme-color"]').content = t === 'dark' ? '#121417' : '#ffffff';
+  })();</script>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="description" content="嗯，最近又折腾起了博客主题。虽然有几篇博客构思想写，但是迟迟不想动笔——果然，博客的主题界面要比内容更有趣啊，有趣才是最重要的。 起初是发现一个博主的博客主题很喜欢：changchen.me。后面发现这个主题是作者魔改的 Hugo 的 nostyleplease，而这个 Hugo 主题则是移植的 Jekyll 的主题 no-style-please。发现正好 Hexo 还没有这个主题，那为什么不把">
+  <title>做了一款 Hexo 主题：No Style, Please - 张晓良の部落格</title>
+  <meta property="og:title" content="做了一款 Hexo 主题：No Style, Please - 张晓良の部落格">
+  <meta property="og:description" content="嗯，最近又折腾起了博客主题。虽然有几篇博客构思想写，但是迟迟不想动笔——果然，博客的主题界面要比内容更有趣啊，有趣才是最重要的。 起初是发现一个博主的博客主题很喜欢：changchen.me。后面发现这个主题是作者魔改的 Hugo 的 nostyleplease，而这个 Hugo 主题则是移植的 Jekyll 的主题 no-style-please。发现正好 Hexo 还没有这个主题，那为什么不把">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://hbuzxl.github.io/hexo-theme-nostyleplease/">
+  <link rel="canonical" href="https://hbuzxl.github.io/hexo-theme-nostyleplease/">
+  <meta property="og:site_name" content="张晓良の部落格">
+  <meta name="twitter:card" content="summary">
+  
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+  
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="张晓良の部落格" type="application/atom+xml">
+</head>
+
+<body>
+  <main class="page-content" aria-label="Content">
+    <div class="w">
+      
+      
+<a class="back" href="/" aria-label="返回上一页"
+  onclick="var r=document.referrer,s=!!r&&r.indexOf(location.origin+'/')===0;if(s&&!location.hash&&history.length>1){history.back();return false}if(s){location.replace(r);return false}">..</a>
+
+<article>
+  <h1 class="entry-title">做了一款 Hexo 主题：No Style, Please</h1>
+
+  <p class="post-meta">
+    <time datetime="2026-10-26T16:03:00.000Z">2026-10-27</time>
+    
+    <span class="sep">·</span>
+    <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a><a href="/categories/%E5%8D%9A%E5%AE%A2/">博客</a>
+    
+  </p>
+
+  
+  <nav class="floating-toc"></nav>
+  
+
+  <div class="post-content"><p>嗯，最近又折腾起了博客主题。虽然有几篇博客构思想写，但是迟迟不想动笔——果然，博客的主题界面要比内容更有趣啊，有趣才是最重要的。</p>
+<p>起初是发现一个博主的博客主题很喜欢：<a target="_blank" rel="noopener" href="https://changchen.me/">changchen.me</a>。后面发现这个主题是作者魔改的 Hugo 的 <a target="_blank" rel="noopener" href="https://github.com/hanwenguo/hugo-theme-nostyleplease">nostyleplease</a>，而这个 Hugo 主题则是移植的 Jekyll 的主题 <a target="_blank" rel="noopener" href="https://github.com/riggraz/no-style-please/">no-style-please</a>。发现正好 Hexo 还没有这个主题，那为什么不把它移植到 Hexo 呢？</p>
+<p>原主题有三个特性：(nearly) no-CSS, fast, minimalist，主打的就是简洁，CSS 文件只有 1.5 KB。</p>
+<p>说干就干，在 AI 的帮助下，几乎五分钟就完成了主题的移植。</p>
+<p>但是原主题有些过于简陋了：没有导航栏，没有分类，没有 tag，没有归档，只有一个主界面。</p>
+<figure class="image">
+  <img loading="lazy" decoding="async" src="/vx_assets/hexo-theme-nostyleplease/original-theme.png" style="border:1px solid rgba(128,128,128,0.28); border-radius:8px;" />
+  <figcaption>原主题：只有一个主界面</figcaption>
+</figure>
+
+<p>于是在继承原主题的样式和风格之后，对它进行了一系列优化：添加了导航栏，添加了 Home 的文章列表展示并支持摘要，添加站点名称、字体、代码高亮、侧边栏目录……等等。</p>
+<p>一通折腾之后，改到最后，已经与原主题只能说毫不相干了。本来我还想叫它 hexo-theme-nostyleplease，这下又不知道能不能这样叫了，笑。</p>
+<figure class="image">
+  <img loading="lazy" decoding="async" src="/vx_assets/hexo-theme-nostyleplease/strip-zh.png" style="border:1px solid rgba(128,128,128,0.28); border-radius:8px;" />
+  <figcaption>中文模式：首页、文章页、暗色模式</figcaption>
+</figure>
+
+<figure class="image">
+  <img loading="lazy" decoding="async" src="/vx_assets/hexo-theme-nostyleplease/strip-en.png" style="border:1px solid rgba(128,128,128,0.28); border-radius:8px;" />
+  <figcaption>English: home, post, dark mode</figcaption>
+</figure>
+
+<figure class="image">
+  <img loading="lazy" decoding="async" src="/vx_assets/hexo-theme-nostyleplease/preview-en.png" style="border:1px solid rgba(128,128,128,0.28); border-radius:8px;" />
+  <figcaption>首页预览</figcaption>
+</figure>
+
+<p>希望以后可以多多写内容。</p>
+<p>最终的效果：</p>
+<figure class="image">
+  <img loading="lazy" decoding="async" src="/vx_assets/hexo-theme-nostyleplease/final.jpg" style="border:1px solid rgba(128,128,128,0.28); border-radius:8px;" />
+  <figcaption>最终效果</figcaption>
+</figure>
+
+<hr>
+<p>最后截图保留一张原博客的样式，留作纪念。</p>
+<figure class="image">
+  <img loading="lazy" decoding="async" src="/vx_assets/hexo-theme-nostyleplease/old-blog.png" style="border:1px solid rgba(128,128,128,0.28); border-radius:8px;" />
+  <figcaption>原博客的样子</figcaption>
+</figure>
+</div>
+</article>
+
+
+<script src="/js/lightbox.js"></script>
+
+
+      
+<footer class="site-footer"><p>Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> · <a href="/atom.xml">RSS</a> · Theme <a target="_blank" rel="noopener" href="https://github.com/HBUzxl/hexo-theme-nostyleplease">nostyleplease</a></p>
+</footer>
+
+
+    </div>
+  </main>
+</body>
+
+</html>
