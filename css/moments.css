@@ -1,0 +1,246 @@
+/* ==========================================================
+   动态页 /moments/
+   极简时间线：左侧时间、一条细线、右侧内容
+   ========================================================== */
+
+.moments-intro {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0 0 2.5rem;
+}
+
+.moments-empty {
+  color: var(--muted);
+}
+
+.moments {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* 年份索引（微博数据跨度长，方便跳转） */
+.moments-index {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  margin: 0 0 2.25rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+}
+
+.moments-index a {
+  color: var(--muted);
+}
+
+.moments-index a:hover {
+  color: var(--fg);
+  text-decoration: none;
+}
+
+/* --- 单条动态 --- */
+.moment {
+  /* 长列表优化：屏幕外的条目先不渲染 */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 320px;
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  column-gap: 1.25rem;
+  padding: 1.5rem 0 0.25rem;
+}
+
+.moment-time {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-top: 0.3rem;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  line-height: 1.55;
+  font-variant-numeric: tabular-nums;
+}
+
+.moment-time time {
+  color: var(--fg);
+}
+
+/* 年份放在页边注里，代替原来的通栏分隔线 */
+.moment-year {
+  margin-bottom: 0.1rem;
+  color: var(--fg);
+  font-weight: 600;
+}
+
+.moment.year-start {
+  padding-top: 2.25rem;
+}
+
+.moment:first-child {
+  padding-top: 1.25rem;
+}
+
+.moment-body {
+  position: relative;
+  min-width: 0;
+  padding-left: 1.35rem;
+  border-left: 1px solid var(--border);
+}
+
+/* --- 正文 --- */
+.moment-text {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.moment-text > :last-child {
+  margin-bottom: 0;
+}
+
+.moment-text pre {
+  margin: 0.85rem 0;
+  font-size: 0.85rem;
+}
+
+/* --- 图片 --- */
+/* 多图：1:1 方裁、3 列，和微信/微博九宫格一致（4 张时 2x2，5 张以上末行左对齐） */
+.moment-images {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.25rem;
+  margin-top: 0.9rem;
+}
+
+.moment-images[data-count="1"] {
+  grid-template-columns: 1fr;
+  justify-items: start;
+}
+
+.moment-images[data-count="2"],
+.moment-images[data-count="4"] {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.moment-photo {
+  display: block;
+  position: relative;
+  line-height: 0;
+  min-width: 0;
+}
+
+.moment-images img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  border-radius: 4px;
+  background: var(--surface-2);
+  object-fit: cover;
+  aspect-ratio: 1;
+}
+
+/* 单图：按原比例显示，不裁切、不套底色框 */
+.moment-images[data-count="1"] img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 400px;
+  aspect-ratio: auto;
+  object-fit: contain;
+  background: none;
+}
+
+/* 超出上限：最后一格盖 +N（微博的做法） */
+.moment-photo[data-more]::after {
+  content: attr(data-more);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* 转发：引用原文 */
+.moment-quote {
+  margin: 0.75rem 0 0;
+  padding-left: 0.85rem;
+  border-left: 2px solid var(--border);
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* --- 外链卡片 --- */
+.moment-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  margin-top: 0.9rem;
+  padding: 0.6rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--surface);
+}
+
+.moment-link:hover {
+  text-decoration: none;
+}
+
+.moment-link-title {
+  color: var(--fg);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.moment-link-url {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* --- 地点 --- */
+.moment-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.15rem 0.9rem;
+  margin: 0.9rem 0 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+/* --- 窄屏：时间移到上方，时间线保留 --- */
+@media (max-width: 600px) {
+  .moment {
+    grid-template-columns: 1fr;
+    row-gap: 0.35rem;
+    padding-top: 1.5rem;
+  }
+
+  .moment-time {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    padding-top: 0;
+  }
+
+  .moment-body {
+    padding-left: 1rem;
+  }
+
+  /* 窄屏下单图再收一档，避免一张图占满一屏 */
+  .moment-images[data-count="1"] img {
+    max-height: 320px;
+  }
+
+}
